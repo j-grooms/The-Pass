@@ -1,4 +1,37 @@
+.nav-holder {
+  position: relative;
+}
+
+.nav-list-item {
+  list-style-type: none;
+}
+
 .nav-links {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 600px;
+  margin: 0px auto;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 5px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 100px;
+}
+
+.profile-dropdown > li {
+  text-align: center;
+  list-style-type: none;
+  border-bottom: 1px solid black;
+  margin: 5px 0px;
+  width: 100px;
 }

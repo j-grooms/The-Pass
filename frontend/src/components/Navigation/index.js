@@ -7,20 +7,20 @@ const Navigation = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	return (
 		<ul className="nav-links">
-			<li>
+			<li className="nav-list-item">
 				<NavLink to="/">Home</NavLink>
 			</li>
 			{!currentUser ? (
 				<>
-					<li>
+					<li className="nav-list-item">
 						<NavLink to="signup">Sign Up</NavLink>
 					</li>
-					<li>
+					<li className="nav-list-item">
 						<NavLink to="/login">Log In</NavLink>
 					</li>
 				</>
 			) : (
-				<ProfileButton />
+				<ProfileButton user={currentUser} />
 			)}
 		</ul>
 	);
