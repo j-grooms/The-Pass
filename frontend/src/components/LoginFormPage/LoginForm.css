@@ -1,0 +1,30 @@
+.login-form-container {
+  padding: 10px;
+  margin: 50px auto;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.login-form-label {
+  text-align: center;
+  font-weight: 600;
+}
+
+.login-button-holder {
+  display: flex;
+  justify-content: center;
+}
+
+.login-submit {
+  margin-top: 15px;
+  border: 3px solid black;
+  border-radius: 25px;
+  width: 100px;
+  height: 33px;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0);
+}

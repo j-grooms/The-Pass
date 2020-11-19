@@ -1,6 +1,8 @@
 import React from "react";
 
+// import "./reset.css"
 import "./index.css";
+import "./components/LoginFormPage/LoginForm.css"
 
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
