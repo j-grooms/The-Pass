@@ -46,7 +46,6 @@ const SignUpFormPage = () => {
 						type="text"
 						onChange={(e) => setUsername(e.target.value)}
 						value={username}
-						className="login-field"
 					/>
 					<p className="login-form-label">Email</p>
 					<input
@@ -54,7 +53,6 @@ const SignUpFormPage = () => {
 						type="text"
 						onChange={(e) => setEmail(e.target.value)}
 						value={email}
-						className="login-field"
 					/>
 					<p className="login-form-label">Password</p>
 					<input
@@ -62,7 +60,6 @@ const SignUpFormPage = () => {
 						type="password"
 						onChange={(e) => setPassword(e.target.value)}
 						value={password}
-						className="login-field"
 					/>
 					<p className="login-form-label">Confirm Password</p>
 					<input
@@ -70,7 +67,6 @@ const SignUpFormPage = () => {
 						type="password"
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						value={confirmPassword}
-						className="login-field"
 					/>
 					<div className="login-button-holder">
 						<button className="login-submit">Register</button>
