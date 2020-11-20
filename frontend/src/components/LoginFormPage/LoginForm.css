@@ -7,12 +7,28 @@
 	justify-content: center;
 	border: 1px solid black;
 	border-radius: 3px;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.form-links {
+	text-align: center;
+}
+
+.form-header {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 18pt;
+
 }
 
 .login-form-label {
+	padding-top: 10px;
 	text-align: center;
 	font-size: 14pt;
-	font-weight: 600;
+}
+
+.login-footer-link {
+	text-decoration: underline;
 }
 
 .login-button-holder {
@@ -22,17 +38,24 @@
 
 .login-field {
 	height: 20px;
+	background-color: white;
+}
+
+.login-field:focus {
+	border: none;
+	height: 20px;
 }
 
 .login-submit {
 	margin-top: 20px;
 	margin-bottom: 15px;
-	border: 2px solid black;
+	border: 2px solid #1C38E9;
 	border-radius: 25px;
 	width: 75px;
 	height: 25px;
-	font-weight: 700;
-	background-color: #1c9be9;
+	color: white;
+	font-weight: 500;
+	background-color: #1C38E9;
 	text-align: center;
 }
 
@@ -41,5 +64,5 @@
 }
 
 .login-submit:hover {
-	background-color: #006dac;
+	transform: translateY(-1px);
 }

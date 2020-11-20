@@ -1,4 +1,6 @@
-a, article, body, button, div, fieldset, footer, form, h1, h2, header, html, i, img, label, li, main, nav, p, section, small, span, strong, textarea, time, ul {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+a, article, body, button, div, fieldset, footer, input, form, h1, h2, header, html, i, img, label, li, main, nav, p, section, small, span, strong, textarea, time, ul {
   background: transparent;
   border: 0;
   box-sizing: inherit;
@@ -10,6 +12,7 @@ a, article, body, button, div, fieldset, footer, form, h1, h2, header, html, i, 
   text-align: inherit;
   text-decoration: inherit;
   vertical-align: inherit;
+  font-family: 'Open Sans', sans-serif;
 }
 
 ul {

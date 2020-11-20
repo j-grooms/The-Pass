@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const LoginFormPage = () => {
 	const currentUser = useSelector((state) => state.session.user);
@@ -23,39 +23,48 @@ const LoginFormPage = () => {
 	};
 
 	return (
-		<div className="login-form-container">
-			<form onSubmit={handleSubmission}>
-				<div>
-					<ul>
-						{errors.map((error, idx) => (
-							<li key={idx}>{error}</li>
-						))}
-					</ul>
-				</div>
+		<>
+			<p className="form-header">Welcome Back.</p>
+			<div className="login-form-container">
+				<form onSubmit={handleSubmission}>
+					<div>
+						<ul>
+							{errors.map((error, idx) => (
+								<li key={idx}>{error}</li>
+							))}
+						</ul>
+					</div>
 
-				<p className="login-form-label">Username</p>
+					<p className="login-form-label">Username</p>
 
-				<input
-          className="login-field"
-					type="text"
-					onChange={(e) => setUsername(e.target.value)}
-					value={username}
-				/>
+					<input
+						className="login-field"
+						type="text"
+						onChange={(e) => setUsername(e.target.value)}
+						value={username}
+					/>
 
-				<p className="login-form-label">Password</p>
+					<p className="login-form-label">Password</p>
 
-				<input
-          className="login-field"
-					type="password"
-					onChange={(e) => setPassword(e.target.value)}
-					value={password}
-				/>
-        <div className="login-button-holder">
-				  <button type="submit" className="login-submit">Log In</button>
-
-        </div>
-			</form>
-		</div>
+					<input
+						className="login-field"
+						type="password"
+						onChange={(e) => setPassword(e.target.value)}
+						value={password}
+					/>
+					<div className="login-button-holder">
+						<button type="submit" className="login-submit">
+							Log In
+						</button>
+					</div>
+				</form>
+			</div>
+			<div className="form-links">
+				<Link to="/signup" className="login-footer-link">
+					Don't Have an Account?
+				</Link>
+			</div>
+		</>
 	);
 };
 
