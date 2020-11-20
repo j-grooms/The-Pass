@@ -32,12 +32,14 @@
 }
 
 .nav-user-icon {
-  margin-top: 5px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
 }
 
 .profile-dropdown {
   position: absolute;
-  top: 55px;
+  top: 40px;
   right: 8px;
   border: 1px solid black;
   border-radius: 3px;
