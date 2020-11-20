@@ -41,8 +41,8 @@ const ProfileButton = ({ user }) => {
 				<ul className="profile-dropdown">
 					<li>{user.username}</li>
 					<li>{user.email}</li>
-					
-						<button onClick={logout}>Log Out</button>
+
+						<button onClick={logout} className="login-submit">Log Out</button>
 
 				</ul>
 			)}

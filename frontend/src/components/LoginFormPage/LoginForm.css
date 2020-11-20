@@ -27,14 +27,19 @@
 .login-submit {
 	margin-top: 20px;
 	margin-bottom: 15px;
-	border: 3px solid black;
+	border: 2px solid black;
 	border-radius: 25px;
-	width: 100px;
-	height: 33px;
+	width: 75px;
+	height: 25px;
 	font-weight: 700;
-	background-color: rgba(0, 0, 0, 0);
+	background-color: #1c9be9;
+	text-align: center;
 }
 
 .login-submit:focus {
   outline: none;
+}
+
+.login-submit:hover {
+	background-color: #006dac;
 }
