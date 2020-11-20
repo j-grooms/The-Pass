@@ -7,7 +7,9 @@
 	justify-content: center;
 	border: 1px solid black;
 	border-radius: 3px;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-image: url('../../images/garlic.jpg');
+	background-size: 360px 360px;
+	/* background-color: rgba(0, 0, 0, 0.1); */
 }
 
 .form-links {
@@ -22,9 +24,12 @@
 }
 
 .login-form-label {
-	padding-top: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	text-align: center;
 	font-size: 14pt;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.5)
 }
 
 .login-footer-link {
@@ -37,18 +42,18 @@
 }
 
 .login-field {
-	height: 20px;
+	height: 25px;
 	background-color: white;
 }
 
 .login-field:focus {
 	border: none;
-	height: 20px;
+	height: 25px;
 }
 
 .login-submit {
 	margin-top: 20px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	border: 2px solid #1C38E9;
 	border-radius: 25px;
 	width: 75px;

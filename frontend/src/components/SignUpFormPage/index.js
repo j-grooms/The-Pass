@@ -79,7 +79,7 @@ const SignUpFormPage = () => {
 			</div>
 			<div className="form-links">
 				<Link to="/login" className="login-footer-link">
-					Don't Have an Account?
+					Already Have an Account?
 				</Link>
 			</div>
 		</>
