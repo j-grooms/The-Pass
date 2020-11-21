@@ -33,7 +33,9 @@ router.post('/post_file', upload.single("img"), function (req, res) {
 
 //GET method route for downloading/retrieving file
 router.get('/get_file/:file_name',(req,res)=>{
-  retrieveFile(req.params.file_name, res);
+  console.log(req.params.file_name)
+  // console.log(keys.iam_secret)
+  // retrieveFile(req.params.file_name, res);
 });
 
 router.get('/', (req, res) => {
@@ -74,8 +76,8 @@ function uploadFile(source,targetName,res){
 function retrieveFile(filename,res){
 
   const getParams = {
-    Bucket: 'sample-bucket-name',
-    Key: filename
+    Bucket: 'the-pass',
+    Key: `/photos/${filename}`
   };
 
   s3.getObject(getParams, function(err, data) {

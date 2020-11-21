@@ -41,6 +41,11 @@ const ImageUploadForm = () => {
     }
   }
 
+  const getLobstah = async(e) => {
+    e.preventDefault()
+    const res = await fetch('api/s3/get_file/lobstah')
+  }
+
   return (
 		<div>
 			{image ? (
@@ -61,6 +66,7 @@ const ImageUploadForm = () => {
 					Submit
 				</button>
 			</form>
+      <button onClick={getLobstah} className="login-submit" >LOBSTAH</button>
 		</div>
 	);
 }
