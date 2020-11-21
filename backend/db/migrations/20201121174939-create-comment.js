@@ -19,7 +19,7 @@ module.exports = {
 				references: { model: "Photos" },
 			},
 			comment: {
-				type: Sequelize.VARCHAR(160),
+				type: Sequelize.STRING,
 				allowNull: false,
 			},
 			createdAt: {
