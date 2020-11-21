@@ -41,6 +41,8 @@ const ImageUploadForm = () => {
     }
   }
 
+  const fileName = "lobstah.jpg"
+
   return (
 		<div>
 			{image ? (
@@ -61,6 +63,7 @@ const ImageUploadForm = () => {
 					Submit
 				</button>
 			</form>
+      <img src={`https://s3.us-east-2.amazonaws.com/the-pass/pictures/${fileName}`} />
 		</div>
 	);
 }

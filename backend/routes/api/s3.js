@@ -32,11 +32,11 @@ router.post('/post_file', upload.single("img"), function (req, res) {
 })
 
 //GET method route for downloading/retrieving file
-router.get('/get_file/:file_name',(req,res)=>{
-  console.log(req.params.file_name)
-  // console.log(keys.iam_secret)
-  // retrieveFile(req.params.file_name, res);
-});
+// router.get('/get_file/:file_name',(req,res)=>{
+//   console.log(req.params.file_name)
+//   // console.log(keys.iam_secret)
+//   // retrieveFile(req.params.file_name, res);
+// });
 
 router.get('/', (req, res) => {
   res.json('connected')
@@ -73,21 +73,21 @@ function uploadFile(source,targetName,res){
   }
 
 //The retrieveFile function
-function retrieveFile(filename,res){
+// function retrieveFile(filename,res){
 
-  const getParams = {
-    Bucket: 'the-pass',
-    Key: `/photos/${filename}`
-  };
+//   const getParams = {
+//     Bucket: 'the-pass',
+//     Key: `/photos/${filename}`
+//   };
 
-  s3.getObject(getParams, function(err, data) {
-    if (err){
-      return res.status(400).send({success:false,err:err});
-    }
-    else{
-      return res.send(data.Body);
-    }
-  });
-}
+//   s3.getObject(getParams, function(err, data) {
+//     if (err){
+//       return res.status(400).send({success:false,err:err});
+//     }
+//     else{
+//       return res.send(data.Body);
+//     }
+//   });
+// }
 
 module.exports = router;
