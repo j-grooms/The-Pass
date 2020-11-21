@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { fetch } from '../../store/csrf'
 
 const ImageUploadForm = () => {
   const [image, setImage] = useState('');
@@ -11,8 +12,19 @@ const ImageUploadForm = () => {
     // Content-Type: <for images>
     const data = new FormData();
     if (image) {
-      data.append('img', image)
     }
+    // data.append('img', image)
+    data['img'] = image
+    console.log(data)
+    submitS3(data);
+  }
+
+  const submitS3 = async(data) => {
+    const res = await fetch("api/s3/post_file", {
+			method: "POST",
+			headers: { },
+			body:JSON.stringify( { file: data } ),
+		});
   }
 
   const handleChange = (e) => {
@@ -20,6 +32,7 @@ const ImageUploadForm = () => {
     const file = e.target.files[0]
     const fileReader = new FileReader()
     setImage(file);
+    console.log(image)
     if (file) {
       fileReader.readAsDataURL(file);
       fileReader.onloadend = () => {
@@ -29,14 +42,28 @@ const ImageUploadForm = () => {
   }
 
   return (
-    <div>
-      {image ? <img src={imageurl} alt='userPhoto' style={{width: "300px", padding: "10px"}} /> : <p>Please upload a photo below</p>}
-      <form onSubmit={handleSubmit}>
-        <input type="file" accept="image/*" onChange={handleChange} />
-        <button type="submit" className="login-submit">Submit</button>
-      </form>
-    </div>
-  )
+		<div>
+			{image ? (
+				<img
+					src={imageurl}
+					alt="userPhoto"
+					style={{ width: "300px", padding: "10px" }}
+				/>
+			) : (
+				<p>Please upload a photo below</p>
+			)}
+			<form onSubmit={handleSubmit} >
+				<input type="file" accept="image/*" onChange={handleChange} />
+				<button type="submit" className="login-submit">
+					Submit
+				</button>
+			</form>
+		</div>
+	);
 }
 
 export default ImageUploadForm;
+
+{
+	/*encType="multipart/form-data"*/
+}

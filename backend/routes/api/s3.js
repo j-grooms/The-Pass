@@ -25,9 +25,10 @@ const s3 = new AWS.S3();
 
 //POST method route for uploading file
 router.post('/post_file', upload.single('demo_file'), function (req, res) {
+  console.log(req.body)
   //Multer middleware adds file(in case of single file ) or files(multiple files) object to the request object.
   //req.file is the demo_file
-  uploadFile(req.file.path, req.file.filename ,res);
+  // uploadFile(req.file.path, req.file.filename ,res);
 })
 
 //GET method route for downloading/retrieving file
@@ -47,17 +48,17 @@ function uploadFile(source,targetName,res){
     fs.readFile(source, function (err, filedata) {
       if (!err) {
         const putParams = {
-            Bucket      : 'sample-bucket-name',
+            Bucket      : 'the-pass',
             Key         : targetName,
             Body        : filedata
         };
         s3.putObject(putParams, function(err, data){
           if (err) {
-            console.log('Could nor upload the file. Error :',err);
+            console.log('Could not upload the file. Error :',err);
             return res.send({success:false});
           }
           else{
-            fs.unlink(source);// Deleting the file from uploads folder(Optional).Do Whatever you prefer.
+            // fs.unlink(source);// Deleting the file from uploads folder(Optional).Do Whatever you prefer.
             console.log('Successfully uploaded the file');
             return res.send({success:true});
           }
