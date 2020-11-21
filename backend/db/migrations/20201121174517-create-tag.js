@@ -8,9 +8,15 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
-			name: {
+			userId: {
+				type: Sequelize.INTEGER,
+				allowNull: false,
+				references: { model: "Users" },
+			},
+			tagName: {
 				type: Sequelize.STRING,
 				allowNull: false,
+				unique: true,
 			},
 			photoId: {
 				type: Sequelize.INTEGER,
