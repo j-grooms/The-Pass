@@ -22,7 +22,7 @@ const ImageUploadForm = () => {
   const submitS3 = async(data) => {
     const res = await fetch("api/s3/post_file", {
 			method: "POST",
-			headers: { "Content-Type" : "image/*" },
+			headers: { "Content-Type" : "image/jpg" },
 			body:{data} ,
 		});
   }
