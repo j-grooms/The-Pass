@@ -30,10 +30,10 @@ const ImageUploadForm = () => {
 
   return (
     <div>
-      {image ? <img src={imageurl} alt='userPhoto' style={{width: "300px"}} /> : <p>Please upload a photo below</p>}
+      {image ? <img src={imageurl} alt='userPhoto' style={{width: "300px", padding: "10px"}} /> : <p>Please upload a photo below</p>}
       <form onSubmit={handleSubmit}>
         <input type="file" accept="image/*" onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <button type="submit" className="login-submit">Submit</button>
       </form>
     </div>
   )

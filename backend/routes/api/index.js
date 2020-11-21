@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
+const s3Router = require('./s3')
 
 // // GET /api/set-token-cookie
 // const asyncHandler = require('express-async-handler');
@@ -43,5 +44,7 @@ router.post("/test", function (req, res) {
 router.use("/session", sessionRouter);
 
 router.use("/users", usersRouter);
+
+router.use("/s3", s3Router);
 
 module.exports = router;
