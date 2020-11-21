@@ -6,7 +6,7 @@ const fs = require('fs');
 const keys = require('../../keys')
 
 const storage = multer.diskStorage({
-  destination: "../uploads",
+  destination: "./uploads",
   filename: function(req, file, cb) {
     cb(null, file.originalname )
   }
