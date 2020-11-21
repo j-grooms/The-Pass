@@ -38,7 +38,10 @@ module.exports = (sequelize, DataTypes) => {
 			return await User.scope("currentUser").findByPk(user.id);
 		}
 		static associate(models) {
-			// define association here
+			User.hasMany(models.Photo ,{foreignKey: 'userId', onDelete: "cascade", hooks: true})
+			User.hasMany(models.Tag ,{foreignKey: 'userId', onDelete: "cascade", hooks: true})
+			User.hasMany(models.Comment ,{foreignKey: 'userId', onDelete: "cascade", hooks: true})
+			User.hasMany(models.Album ,{foreignKey: 'userId', onDelete: "cascade", hooks: true})
 		}
 	}
 	User.init(
