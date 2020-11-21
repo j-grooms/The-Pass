@@ -11,7 +11,6 @@ module.exports = {
 			tagName: {
 				type: Sequelize.STRING,
 				allowNull: false,
-				unique: true,
 			},
 			photoId: {
 				type: Sequelize.INTEGER,
