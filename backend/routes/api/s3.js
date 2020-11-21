@@ -28,7 +28,7 @@ router.post('/post_file', upload.single("img"), function (req, res) {
   console.log(req.body)
   //Multer middleware adds file(in case of single file ) or files(multiple files) object to the request object.
   //req.file is the demo_file
-  // uploadFile(req.img.path, req.img.filename ,res);
+  // uploadFile(req.body.img.path, req.body.img.filename ,res);
 })
 
 //GET method route for downloading/retrieving file
