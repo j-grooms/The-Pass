@@ -1,19 +1,13 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert("Tags", [
-      {}
-    ])
-  },
+	up: (queryInterface, Sequelize) => {
+		return queryInterface.bulkInsert("Tags", [
+      {userId: }
+    ]);
+	},
 
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
-  }
+	down: (queryInterface, Sequelize) => {
+		return queryInterface.bulkDelete("Tags", null, {});
+	},
 };

@@ -39,7 +39,6 @@ module.exports = (sequelize, DataTypes) => {
 		}
 		static associate(models) {
 			User.hasMany(models.Photo ,{foreignKey: 'userId', onDelete: "cascade", hooks: true})
-			User.hasMany(models.Tag ,{foreignKey: 'userId', onDelete: "cascade", hooks: true})
 			User.hasMany(models.Comment ,{foreignKey: 'userId', onDelete: "cascade", hooks: true})
 			User.hasMany(models.Album ,{foreignKey: 'userId', onDelete: "cascade", hooks: true})
 		}
