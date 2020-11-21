@@ -7,16 +7,16 @@ const ImageUploadForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(image)
+    // console.log(image)
     // attach this to the body, no need to stringify
     // Content-Type: <for images>
     const data = new FormData();
     if (image) {
+      // data.append('img', image)
+      data['img'] = image
+      console.log("data", data)
+      submitS3(data);
     }
-    // data.append('img', image)
-    data['img'] = image
-    console.log(data)
-    submitS3(data);
   }
 
   const submitS3 = async(data) => {
@@ -41,11 +41,6 @@ const ImageUploadForm = () => {
     }
   }
 
-  const getLobstah = async(e) => {
-    e.preventDefault()
-    const res = await fetch('api/s3/get_file/lobstah')
-  }
-
   return (
 		<div>
 			{image ? (
@@ -66,7 +61,6 @@ const ImageUploadForm = () => {
 					Submit
 				</button>
 			</form>
-      <button onClick={getLobstah} className="login-submit" >LOBSTAH</button>
 		</div>
 	);
 }
