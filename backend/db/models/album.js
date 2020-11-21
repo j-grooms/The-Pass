@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Album = sequelize.define('Album', {
-    albumName: DataTypes.STRING,
     userId: DataTypes.INTEGER,
+    albumName: DataTypes.STRING,
     photoId: DataTypes.INTEGER
   }, {});
   Album.associate = function(models) {
