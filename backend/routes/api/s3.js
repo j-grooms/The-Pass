@@ -6,7 +6,7 @@ const fs = require('fs');
 const keys = require('../../keys')
 
 const storage = multer.diskStorage({
-  destination: "./uploads",
+  destination: "../uploads",
   filename: function(req, file, cb) {
     cb(null, file.originalname )
   }
@@ -24,7 +24,7 @@ AWS.config.update({
 const s3 = new AWS.S3();
 
 //POST method route for uploading file
-router.post('/post_file', upload.single('demo_file'), function (req, res) {
+router.post('/post_file', upload.single("img"), function (req, res) {
   console.log(req.body)
   //Multer middleware adds file(in case of single file ) or files(multiple files) object to the request object.
   //req.file is the demo_file

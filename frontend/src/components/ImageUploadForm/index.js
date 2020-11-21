@@ -22,8 +22,8 @@ const ImageUploadForm = () => {
   const submitS3 = async(data) => {
     const res = await fetch("api/s3/post_file", {
 			method: "POST",
-			headers: { },
-			body:JSON.stringify( { file: data } ),
+			headers: { "Content-Type" : "image/*" },
+			img:{data} ,
 		});
   }
 
@@ -52,7 +52,10 @@ const ImageUploadForm = () => {
 			) : (
 				<p>Please upload a photo below</p>
 			)}
-			<form onSubmit={handleSubmit} >
+			<form
+        encType="multipart/form-data"
+        onSubmit = { handleSubmit }
+			>
 				<input type="file" accept="image/*" onChange={handleChange} />
 				<button type="submit" className="login-submit">
 					Submit
@@ -63,7 +66,3 @@ const ImageUploadForm = () => {
 }
 
 export default ImageUploadForm;
-
-{
-	/*encType="multipart/form-data"*/
-}
