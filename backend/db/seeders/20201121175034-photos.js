@@ -9,7 +9,7 @@ module.exports = {
       {userId: 2, fileName: 'lamb.jpg', createdAt: new Date(), updatedAt: new Date()},
       {userId: 2, fileName: 'shrimp.jpg', createdAt: new Date(), updatedAt: new Date()},
       {userId: 3, fileName: 'dessert1.jpg', createdAt: new Date(), updatedAt: new Date()},
-      {userId: 3, fileName: 'birdsNest.jpg', createdAt: new Date(), updatedAt: new Date()},
+      {userId: 3, fileName: 'birdsNest.JPG', createdAt: new Date(), updatedAt: new Date()},
       {userId: 3, fileName: 'lemonCake.jpg', createdAt: new Date(), updatedAt: new Date()},
       {userId: 4, fileName: 'foiegras.jpg', createdAt: new Date(), updatedAt: new Date()},
       {userId: 4, fileName: 'octopus.jpg', createdAt: new Date(), updatedAt: new Date()},

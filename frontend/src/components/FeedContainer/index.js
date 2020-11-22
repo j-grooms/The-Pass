@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect } from 'react';
 import * as photoActions from "../../store/photos";
 import {useDispatch, useSelector} from "react-redux";
 import Photo from '../Photo'
@@ -11,6 +11,7 @@ const FeedContainer = () => {
 
   // will run on intial mount and any subsequent dispatch actions.
   useEffect(() => {
+    console.log(statePhotos)
     console.log("dispatch")
     // dispatches custom action
     return dispatch(photoActions.getAllPhotos()).catch((res) => console.log("ERROR"));
@@ -18,13 +19,13 @@ const FeedContainer = () => {
   }, [dispatch])
 
 
-  return ( statePhotos &&
-		<div>
+  return ( statePhotos.photos &&
+		(<div>
 			{console.log(statePhotos.photos)}
 			{statePhotos.photos.map((photo) => (
 				<Photo photo={photo} />
 			))}
-		</div>
+		</div>)
 	);
 
 
