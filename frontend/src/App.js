@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpFormPage from "./components/SignUpFormPage";
+import FeedContainer from "./components/FeedContainer";
 import Navigation from './components/Navigation'
 import ImageUploadForm from './components/ImageUploadForm'
 import * as sessionActions from "./store/session";
@@ -21,6 +22,7 @@ function App() {
 				<Switch>
 					<Route path="/login" component={LoginFormPage} />
 					<Route path="/signup" component={SignUpFormPage} />
+					<Route exact path="/feed" component={FeedContainer} />
 				</Switch>
 			</React.Fragment>
 		)
