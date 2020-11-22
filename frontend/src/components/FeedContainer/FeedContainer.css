@@ -1,0 +1,19 @@
+.feed-container {
+  max-width: 1200px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.feed-item {
+  max-width: 500px;
+  max-height: 250px;
+  align-self: center;
+  overflow: hidden;
+}
+
+.feed-item:hover {
+
+}

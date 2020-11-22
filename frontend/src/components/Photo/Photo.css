@@ -1,3 +1,6 @@
 .feed-photo {
-  max-width: 500px;
+  /* max-height: 300px;
+  width: 300px;
+  overflow: hidden; */
+  align-self: center;
 }
