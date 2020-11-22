@@ -3,6 +3,7 @@ import * as photoActions from "../../store/photos";
 import {useDispatch, useSelector} from "react-redux";
 import Photo from '../Photo'
 import './FeedContainer.css'
+import { Link, Switch } from 'react-router-dom';
 
 const FeedContainer = () => {
   // Subscribe to store
@@ -19,12 +20,19 @@ const FeedContainer = () => {
   }, [dispatch])
 
   // statePhoto.photos is needed, as that is where the null value lives
-  return ( statePhotos.photos &&
-		(<div className="feed-container">
-			{statePhotos.photos.map((photo) => (
-				<div className="feed-item"><Photo photo={photo} /></div>
-			))}
-		</div>)
+  return (
+		statePhotos.photos && (
+			<div className="feed-container">
+				{console.log(statePhotos.photos)}
+				{statePhotos.photos.map((photo) => (
+					<div className="feed-item">
+						<Link to={`${photo.userId}/photos`}>
+							<Photo photo={photo.filename} />
+						</Link>
+					</div>
+				))}
+			</div>
+		)
 	);
 
 

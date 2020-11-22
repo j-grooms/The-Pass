@@ -7,6 +7,7 @@ import FeedContainer from "./components/FeedContainer";
 import Navigation from './components/Navigation'
 import ImageUploadForm from './components/ImageUploadForm'
 import * as sessionActions from "./store/session";
+import UserFeed from "./components/UserFeed";
 
 function App() {
 	const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
 				<Navigation />
 				{/* <ImageUploadForm /> */}
 				<Switch>
+					{/* <Route path="photos/:id/" component={UserFeed} /> */}
 					<Route path="/login" component={LoginFormPage} />
 					<Route path="/signup" component={SignUpFormPage} />
 					<Route path="/upload" component={ImageUploadForm} />
