@@ -58,9 +58,7 @@ const filenameData = (photos) => {
   let filenames = [];
   // console.log(photos[1])
   // console.log(photos[1].dataValues.fileName)
-  photos.map((photo) => {
-    console.log(photo);
-    return filenames.push(photo.dataValues.fileName)});
+  photos.map((photo) => filenames.push(photo.dataValues.fileName));
   return filenames;
 }
 
