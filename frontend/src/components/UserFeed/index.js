@@ -5,15 +5,15 @@ import * as photoActions from "../../store/photos";
 
 const UserFeed = () => {
 	const statePhotos = useSelector((state) => state.photos.photos);
-	const params = useParams();
+	const {id} = useParams();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-    console.log("PARAMS", params)
+    console.log("PARAMS", id)
 	  // return dispatch(photoActions.getPhotosByUser())
 	}, [])
 
-	return (<div>{params}</div>);
+	return (<div>{id}</div>);
 };
 
 export default UserFeed;
