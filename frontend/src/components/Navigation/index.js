@@ -27,7 +27,14 @@ const Navigation = () => {
 						</li>
 					</>
 				) : (
-					<ProfileButton user={currentUser} />
+					<>
+						<li className="nav-list-item">
+							<NavLink to="/upload" className="nav-link">
+								Upload an Image
+							</NavLink>
+						</li>
+						<ProfileButton user={currentUser} />
+					</>
 				)}
 			</ul>
 		</div>

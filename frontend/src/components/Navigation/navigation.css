@@ -12,6 +12,7 @@
   text-decoration: none;
   color: white;
   height: 50px;
+  align-self: center;
 }
 
 .active {

@@ -18,11 +18,12 @@ function App() {
 		isLoaded && (
 			<React.Fragment>
 				<Navigation />
-				<ImageUploadForm />
+				{/* <ImageUploadForm /> */}
 				<Switch>
 					<Route path="/login" component={LoginFormPage} />
 					<Route path="/signup" component={SignUpFormPage} />
-					<Route exact path="/feed" component={FeedContainer} />
+					<Route path="/upload" component={ImageUploadForm} />
+					<Route exact path="/" component={FeedContainer} />
 				</Switch>
 			</React.Fragment>
 		)
