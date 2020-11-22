@@ -3,6 +3,7 @@ import { fetch } from "./csrf";
 
 const GET_ALL = "photos/getAll";
 
+// action creator modifies store
 const allPhotos = (photos) => {
 	return {
 		type: GET_ALL,
@@ -10,12 +11,14 @@ const allPhotos = (photos) => {
 	};
 };
 
+// does fetch call and invokes action creator above with payload
 export const getAllPhotos = () => async (dispatch) => {
 	const response = await fetch("api/users/photos");
 	dispatch(allPhotos(response.data));
 	return response;
 };
 
+// reduces the payload into the state
 const photoReducer = (state = {photos: null}, action) => {
   let newState
   switch (action.type) {
@@ -28,4 +31,5 @@ const photoReducer = (state = {photos: null}, action) => {
   }
 }
 
+// export for use in rootReducer
 export default photoReducer;

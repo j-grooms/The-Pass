@@ -8,6 +8,7 @@ const FeedContainer = () => {
   const [photos, setPhotos] = useState('');
 
   useEffect(() => {
+    // dispatches custom action
     return dispatch(photoActions.getAllPhotos()).catch((res) => console.log("ERROR"));
 
   }, [])
