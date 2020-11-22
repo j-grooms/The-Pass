@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, Photo } = require("../../db/models");
 
 const router = express.Router();
 
@@ -43,5 +43,25 @@ router.post(
     });
   }),
 );
+
+// Get image filenames for feed
+router.get(
+  '/photos',
+  asyncHandler( async(req, res) => {
+    const feedPhotos = await Photo.findAll({});
+    const filenames = filenameData(feedPhotos)
+    res.send(filenames)
+  })
+)
+
+const filenameData = (photos) => {
+  let filenames = [];
+  // console.log(photos[1])
+  // console.log(photos[1].dataValues.fileName)
+  photos.map((photo) => {
+    console.log(photo);
+    return filenames.push(photo.dataValues.fileName)});
+  return filenames;
+}
 
 module.exports = router;

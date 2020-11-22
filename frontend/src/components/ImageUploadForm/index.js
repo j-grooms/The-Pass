@@ -63,7 +63,7 @@ const ImageUploadForm = () => {
 					Submit
 				</button>
 			</form>
-      <img src={`https://s3.us-east-2.amazonaws.com/the-pass/pictures/${fileName}`} />
+      <img src={`https://s3.us-east-2.amazonaws.com/the-pass/${fileName}`} />
 		</div>
 	);
 }
