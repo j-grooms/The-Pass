@@ -11,16 +11,16 @@ const UserFeed = () => {
 
 	useEffect(() => {
 		// console.log("PARAMS", id)
-		console.log(statePhotos)
-		return dispatch(photoActions.getPhotosByUser(id));
-	}, [dispatch, id, statePhotos]);
+		// console.log(statePhotos)
+		return dispatch(photoActions.getPhotosByUser(id)).catch((res) => console.log("Error"));
+	}, [dispatch]);
 
-	return (
+	return ( statePhotos.photo &&
 		 (
 			<div>
-				{/* {console.log(statePhotos)} */}
+				{/* {console.log("STATE", statePhotos)} */}
 				<p>{id}</p>
-				{statePhotos ? statePhotos.photos.map(photo => <Photo photo={photo.filename}/>): <></>}
+				{/* {statePhotos.photo.photos.map(photo => <Photo photo={photo.filename}/>)} */}
 			</div>
 		)
 	);
