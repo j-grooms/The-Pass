@@ -40,26 +40,29 @@ router.get(
 		//Change param into db friendly string
 		const query = req.params.name.split("_").join(" ");
 
-		const albumContents = await Album.findAll({ where: { albumName: query } });
+		const albumContents = await Album.findAll({ where: { albumName: query }, include:[{model: Photo}] });
 
-		getAllAlbumPhotos(albumContents, req.params.id)
+		getAllAlbumPhotos(albumContents)
 
 		res.send(albumContents);
-		// res.end()
 	})
 );
-//TODO: debug why this push is not working properly.
-// Return all photo data associated with album
-const getAllAlbumPhotos = async (albums, userId) => {
-	let filenames = [];
 
-	await albums.forEach(async(album) => {
-		const filename = await Photo.findByPk(album.photoId);
-		console.log("FILENAME", filename.dataValues.fileName)
-		filenames.push(filename.dataValues.fileName)
+// Return all photo data associated with album
+const getAllAlbumPhotos = (albums) => {
+	let data = [];
+
+	albums.map((album) => {
+
+		data.push({
+			userId: album.userId,
+			albumName: album.albumName,
+			photoId: album.photoId,
+			fileName: album.Photo.fileName
+		})
 	});
-	console.log("ARRAY", filenames)
-	return filenames;
+
+	return data;
 };
 
 // Return a full list of albums
