@@ -27,7 +27,7 @@ function App() {
 					<Route path="/signup" component={SignUpFormPage} />
 					<Route path="/upload" component={ImageUploadForm} />
 					<Route path="/feed" component={FeedContainer} />
-					{/* <Route path="/:id" component={UserFeed} /> */}
+					<Route path="/:id" component={UserFeed} />
 				</Switch>
 			</React.Fragment>
 		)

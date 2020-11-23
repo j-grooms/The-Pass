@@ -5,7 +5,7 @@ import * as photoActions from "../../store/photos";
 import Photo from "../Photo";
 
 const UserFeed = () => {
-	const statePhotos = useSelector((state) => state.photos);
+	const statePhotos = useSelector((state) => state.photo);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 
@@ -15,12 +15,12 @@ const UserFeed = () => {
 		return dispatch(photoActions.getPhotosByUser(id)).catch((res) => console.log("Error"));
 	}, [dispatch]);
 
-	return ( statePhotos.photo &&
+	return (
 		 (
 			<div>
 				{/* {console.log("STATE", statePhotos)} */}
 				<p>{id}</p>
-				{/* {statePhotos.photo.photos.map(photo => <Photo photo={photo.filename}/>)} */}
+				{statePhotos.photos.map(photo => <Photo photo={photo.filename}/>)}
 			</div>
 		)
 	);
