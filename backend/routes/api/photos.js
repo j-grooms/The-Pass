@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { User, Photo, Album, Tag } = require("../../db/models");
+const { User, Photo, Album, Tag, Comment } = require("../../db/models");
 
 const router = express.Router();
 
@@ -42,36 +42,52 @@ router.get(
 		// Tested with underscores (British_Food_Classics)
 		const query = req.params.name.split("_").join(" ");
 
-		const albumContents = await Album.findAll({ where: { albumName: query }, include:[{model: Photo}, {model: User}] });
+		const albumContents = await Album.findAll({
+			where: { albumName: query },
+			include: [{ model: Photo }, { model: User }],
+		});
 
-		const data = getAllAlbumPhotos(albumContents)
+		const data = getAllAlbumPhotos(albumContents);
 
 		res.send(data);
 	})
 );
 
 // Get all photos assocaited with a Tag
-router.get("/tag/:name(\\w+)", asyncHandler(async (req, res) => {
-	const tagPhotos = await Tag.findAll({where: {tagName: req.params.name}, include: [{model: Photo}]});
-	const data = getTagData(tagPhotos)
+router.get(
+	"/tag/:name(\\w+)",
+	asyncHandler(async (req, res) => {
+		const tagPhotos = await Tag.findAll({
+			where: { tagName: req.params.name },
+			include: [{ model: Photo }],
+		});
+		const data = getTagData(tagPhotos);
 
-	res.send(data)
+		res.send(data);
+	})
+);
+
+// Get all comments associated with a photo
+router.get("/:id/comments", asyncHandler(async (req, res) => {
+	const comments = await Comment.findAll({where: {photoId: req.params.id}});
+	res.send(comments)
 }))
+
 
 // Return fileNames associated with a particular Tag
 const getTagData = (tags) => {
 	let data = [];
 
-	tags.map(tag => {
+	tags.map((tag) => {
 		data.push({
 			tagName: tag.tagName,
 			photoId: tag.photoId,
 			fileName: tag.Photo.fileName,
-			userId: tag.Photo.userId
-		})
-	})
+			userId: tag.Photo.userId,
+		});
+	});
 	return data;
-}
+};
 
 // Return all photo data associated with album
 const getAllAlbumPhotos = (albums) => {
@@ -85,7 +101,7 @@ const getAllAlbumPhotos = (albums) => {
 			photoId: album.photoId,
 			fileName: album.Photo.fileName,
 			username: album.User.username,
-		})
+		});
 	});
 
 	return data;
