@@ -68,11 +68,15 @@ router.get(
 );
 
 // Get all comments associated with a photo
-router.get("/:id/comments", asyncHandler(async (req, res) => {
-	const comments = await Comment.findAll({where: {photoId: req.params.id}});
-	res.send(comments)
-}))
-
+router.get(
+	"/:id/comments",
+	asyncHandler(async (req, res) => {
+		const comments = await Comment.findAll({
+			where: { photoId: req.params.id },
+		});
+		res.send(comments);
+	})
+);
 
 // Return fileNames associated with a particular Tag
 const getTagData = (tags) => {
