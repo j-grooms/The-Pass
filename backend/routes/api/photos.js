@@ -34,10 +34,38 @@ router.get(
 	})
 );
 
+router.get(
+	"/:id(\\d+)/albums/:name(\\w+)",
+	asyncHandler(async (req, res) => {
+		//Change param into db friendly string
+		const query = req.params.name.split("_").join(" ");
+
+		const albumContents = await Album.findAll({ where: { albumName: query } });
+
+		getAllAlbumPhotos(albumContents, req.params.id)
+
+		res.send(albumContents);
+		// res.end()
+	})
+);
+//TODO: debug why this push is not working properly.
+// Return all photo data associated with album
+const getAllAlbumPhotos = async (albums, userId) => {
+	let filenames = [];
+
+	await albums.forEach(async(album) => {
+		const filename = await Photo.findByPk(album.photoId);
+		console.log("FILENAME", filename.dataValues.fileName)
+		filenames.push(filename.dataValues.fileName)
+	});
+	console.log("ARRAY", filenames)
+	return filenames;
+};
+
 // Return a full list of albums
 const getAlbumData = (albums, userId) => {
 	// find all unique album names
-	let albumList = new Set()
+	let albumList = new Set();
 	albums.map((album) => {
 		albumList.add(album.dataValues.albumName);
 	});
@@ -45,10 +73,12 @@ const getAlbumData = (albums, userId) => {
 	// iterate through each to return an array of objects
 	// keep outputs uniform with other routes
 	let albumData = [];
-	albumList.forEach(album => (albumData.push({
-		albumName: album,
-		userId,
-	})))
+	albumList.forEach((album) =>
+		albumData.push({
+			albumName: album,
+			userId,
+		})
+	);
 
 	console.log("list", albumData);
 	return albumData;
