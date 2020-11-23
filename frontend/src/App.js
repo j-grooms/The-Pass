@@ -21,10 +21,10 @@ function App() {
 				<Navigation />
 				{/* <ImageUploadForm /> */}
 				<Switch>
-					<Route path="/photos/:id" component={UserFeed} />
 					<Route path="/login" component={LoginFormPage} />
 					<Route path="/signup" component={SignUpFormPage} />
 					<Route path="/upload" component={ImageUploadForm} />
+					<Route path="/:id" component={UserFeed} />
 					<Route exact path="/" component={FeedContainer} />
 				</Switch>
 			</React.Fragment>

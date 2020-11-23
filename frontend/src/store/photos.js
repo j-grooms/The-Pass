@@ -30,7 +30,7 @@ export const getAllPhotos = () => async (dispatch) => {
 // does fetch call for user's photos
 export const getPhotosByUser = (id) => async(dispatch) => {
   const response = await fetch(`api/photos/${id}`);
-  dispatch(userPhotos(response));
+  dispatch(userPhotos(response.data));
   return response;
 }
 
