@@ -6,6 +6,7 @@ module.exports = {
       {userId: 2, albumName: "British Food Classics", photoId: 1, createdAt: new Date(), updatedAt: new Date()},
       {userId: 2, albumName: "British Food Classics", photoId: 3, createdAt: new Date(), updatedAt: new Date()},
       {userId: 2, albumName: "British Food Classics", photoId: 4, createdAt: new Date(), updatedAt: new Date()},
+      {userId: 2, albumName: "TEST PLEASE REMOVE ME FROM SEEDER", photoId: 4, createdAt: new Date(), updatedAt: new Date()},
       {userId: 4, albumName: "Seafood", photoId: 11, createdAt: new Date(), updatedAt: new Date()},
       {userId: 4, albumName: "Seafood", photoId: 13, createdAt: new Date(), updatedAt: new Date()},
       {userId: 4, albumName: "Seafood", photoId: 10, createdAt: new Date(), updatedAt: new Date()},
