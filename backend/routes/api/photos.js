@@ -24,6 +24,15 @@ router.get(
 	})
 );
 
+// Look up photo by fileName
+router.get(
+	"/:name([\\w.]+)",
+	asyncHandler(async (req, res) => {
+		const photo = await Photo.findOne({ where: { fileName: req.params.name } });
+		res.send(photo);
+	})
+);
+
 // Get all albums associated with specific user
 router.get(
 	"/:id(\\d+)/albums",

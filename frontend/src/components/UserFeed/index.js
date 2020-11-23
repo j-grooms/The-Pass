@@ -10,8 +10,6 @@ const UserFeed = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// console.log("PARAMS", id)
-		// console.log(statePhotos)
 		return dispatch(photoActions.getPhotosByUser(id)).catch((res) => console.log("Error"));
 	}, [dispatch]);
 

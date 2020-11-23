@@ -22,14 +22,14 @@ const userPhotos = (photos) => {
 
 // does fetch call and invokes action creator above with payload
 export const getAllPhotos = () => async (dispatch) => {
-	const response = await fetch("api/photos");
+	const response = await fetch("/api/photos");
 	dispatch(allPhotos(response.data));
 	return response;
 };
 
 // does fetch call for user's photos
 export const getPhotosByUser = (id) => async(dispatch) => {
-  const response = await fetch(`api/photos/${id}`);
+  const response = await fetch(`/api/photos/${id}`);
   dispatch(userPhotos(response.data));
   return response;
 }
