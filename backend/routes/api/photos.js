@@ -78,12 +78,14 @@ router.get(
 
 // Get all comments associated with a photo
 router.get(
-	"/:id/comments",
+	"/comments/:name",
 	asyncHandler(async (req, res) => {
+		const photo = await Photo.findOne({ where: { fileName: req.params.name } });
 		const comments = await Comment.findAll({
-			where: { photoId: req.params.id }, include: [{model: User}]
+			where: { photoId: photo.id },
+			include: [{ model: User }],
 		});
-		const data = getCommentData(comments)
+		const data = getCommentData(comments);
 		res.send(data);
 	})
 );

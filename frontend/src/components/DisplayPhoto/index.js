@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { fetch } from "../../store/csrf";
 import * as photoActions from "../../store/photos";
 import * as commentActions from "../../store/comments";
 import Photo from "../Photo";
@@ -8,23 +9,30 @@ import "./displayPhoto.css";
 
 const DisplayPhoto = () => {
 	const statePhotos = useSelector((state) => state.photo);
-	const stateComments = useSelector((state) => state.comment);
+	// const stateComments = useSelector((state) => state.comment);
+	const [comments, setComments] = useState("");
 	const { id, name } = useParams();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(commentActions.getPhotoComments(id)).catch((res) =>
-			console.log("COMMENT ERROR")
-		);
+		// dispatch(commentActions.getPhotoComments(id)).catch((res) =>
+		// 	console.log("COMMENT ERROR")
+		// );
+		(async () => {
+			const commentData = await fetch(`/api/photos/comments/${name}`);
+			setComments(commentData);
+		})();
+
 		return dispatch(photoActions.getPhotosByUser(id)).catch((res) =>
 			console.log("Error")
 		);
-	}, [dispatch, id]);
+	}, [dispatch, id, name]);
 
 	useEffect(() => {}, [name]);
 
 	return (
-		(statePhotos && stateComments) && (
+		statePhotos &&
+		comments && (
 			<>
 				<div className="display-container">
 					<img
@@ -34,10 +42,11 @@ const DisplayPhoto = () => {
 					/>
 				</div>
 				<div className="comments-container">
-					{stateComments.comments.map((comment) => (
+					{console.log("COMMENTS", comments)}
+					{comments.data.map((comment) => (
 						<div className="comment">
-							<p>{comment.username}</p>
-							<p>{comment.comment}</p>
+							<p className="comment-user">{comment.username}</p>
+							<p className="comment-content">{comment.comment}</p>
 						</div>
 					))}
 				</div>

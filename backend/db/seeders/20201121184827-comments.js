@@ -61,7 +61,7 @@ module.exports = {
 			},
 			{
 				userId: 3,
-				photoId: 5,
+				photoId: 10,
 				comment: "Great color! Don't know if I could eat it though...",
 				createdAt: new Date(),
 				updatedAt: new Date(),

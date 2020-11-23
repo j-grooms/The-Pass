@@ -35,3 +35,20 @@
   margin-bottom: 50px;
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+.comment-user {
+  color: white;
+  font-size: 14pt;
+}
+
+.comment-content {
+  color: white;
+  font-size: 12pt;
+}
+
+.comments-container {
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 0px auto;
+
+}
