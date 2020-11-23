@@ -15,8 +15,9 @@ router.get(
 );
 
 router.get('/:id(\\d+)/', asyncHandler(async(req, res) => {
-  const user = await User.findByPk(req.params.id);
-  res.send(user)
+  const photos = await Photo.findAll({ where: {userId: req.params.id }});
+	const data = getData(photos);
+	res.send(data)
 
 }))
 

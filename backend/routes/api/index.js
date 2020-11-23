@@ -41,6 +41,7 @@ const photoRouter = require('./photos')
 router.post("/test", function (req, res) {
   res.json({ requestBody: req.body });
 });
+router.use("/photos", photoRouter);
 
 router.use("/session", sessionRouter);
 
@@ -48,6 +49,5 @@ router.use("/users", usersRouter);
 
 router.use("/s3", s3Router);
 
-router.use("/photos", photoRouter);
 
 module.exports = router;

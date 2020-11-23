@@ -4,16 +4,21 @@ import { useParams } from "react-router-dom";
 import * as photoActions from "../../store/photos";
 
 const UserFeed = () => {
-	const statePhotos = useSelector((state) => state.photos.photos);
+	const statePhotos = useSelector((state) => state.photos);
 	const {id} = useParams();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-    console.log("PARAMS", id)
-	  // return dispatch(photoActions.getPhotosByUser())
-	}, [])
+    // console.log("PARAMS", id)
+	  return dispatch(photoActions.getPhotosByUser(id))
+	}, [dispatch, id])
 
-	return (<div>{id}</div>);
+	return ( 
+		(<div>
+			{console.log(statePhotos)}
+			<p>{id}</p>
+		</div>)
+	);
 };
 
 export default UserFeed;
