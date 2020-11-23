@@ -26,7 +26,7 @@ const DisplayPhoto = () => {
            alt="feed"
          />
        </div>
-        <p className="other-photos-header">More by this user:</p>
+        <p className="other-photos-header">All photos by this user:</p>
         <div className="preview-container">
           {statePhotos.photos.map(photo => (
             <div className="preview-photo">
