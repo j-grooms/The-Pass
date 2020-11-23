@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { User, Photo, Album } = require("../../db/models");
+const { User, Photo, Album, Tag } = require("../../db/models");
 
 const router = express.Router();
 
@@ -34,31 +34,57 @@ router.get(
 	})
 );
 
+// Get album contents by name
 router.get(
 	"/:id(\\d+)/albums/:name(\\w+)",
 	asyncHandler(async (req, res) => {
-		//Change param into db friendly string
+		// Change param into db friendly string
+		// Tested with underscores (British_Food_Classics)
 		const query = req.params.name.split("_").join(" ");
 
-		const albumContents = await Album.findAll({ where: { albumName: query }, include:[{model: Photo}] });
+		const albumContents = await Album.findAll({ where: { albumName: query }, include:[{model: Photo}, {model: User}] });
 
-		getAllAlbumPhotos(albumContents)
+		const data = getAllAlbumPhotos(albumContents)
 
-		res.send(albumContents);
+		res.send(data);
 	})
 );
+
+// Get all photos assocaited with a Tag
+router.get("/tag/:name(\\w+)", asyncHandler(async (req, res) => {
+	const tagPhotos = await Tag.findAll({where: {tagName: req.params.name}, include: [{model: Photo}]});
+	const data = getTagData(tagPhotos)
+
+	res.send(data)
+}))
+
+// Return fileNames associated with a particular Tag
+const getTagData = (tags) => {
+	let data = [];
+
+	tags.map(tag => {
+		data.push({
+			tagName: tag.tagName,
+			photoId: tag.photoId,
+			fileName: tag.Photo.fileName,
+			userId: tag.Photo.userId
+		})
+	})
+	return data;
+}
 
 // Return all photo data associated with album
 const getAllAlbumPhotos = (albums) => {
 	let data = [];
 
 	albums.map((album) => {
-
+		// Follow other route structures for easy store insertion
 		data.push({
 			userId: album.userId,
 			albumName: album.albumName,
 			photoId: album.photoId,
-			fileName: album.Photo.fileName
+			fileName: album.Photo.fileName,
+			username: album.User.username,
 		})
 	});
 
