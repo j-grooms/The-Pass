@@ -20,6 +20,10 @@
 	margin-top: 20px;
 	text-align: center;
 	font-size: 18pt;
+	width: 200px;
+	margin: 0px auto;
+	color: white;
+	/* background-color: rgba(0, 0, 0, 0.5); */
 
 }
 
@@ -44,6 +48,7 @@
 .login-field {
 	height: 25px;
 	background-color: white;
+	width: 200px;
 }
 
 .login-field:focus {

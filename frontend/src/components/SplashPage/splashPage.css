@@ -1,0 +1,48 @@
+body {
+  background-image: url('../../images/spiceBoard.jpg');
+  background-size: fill;
+  align-self: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* overflow: hidden;
+  height: 100vh;
+  width: 100vw; */
+
+}
+.splash-div {
+  background-color: rgba( 0, 0, 0, 0.5);
+}
+
+.splash-title {
+  color: white;
+  font-size: 24pt;
+  text-align: center;
+  padding: 30px 0px;
+}
+
+.splash-subtitle {
+  color: white;
+  font-size: 20pt;
+  text-align: center;
+  padding-bottom: 30px;
+  padding-top: 15px;
+}
+
+.splash-links {
+  display: flex;
+  margin: 0px auto;
+  max-width: 300px;
+  height: 40px;
+  justify-content: space-around;
+  background-color: rgba( 0, 0, 0, 0.5);
+  /* border: 1px solid red; */
+  border-radius: 0 0 10px 10px;
+
+}
+
+.splash-link {
+  color: white;
+  font-size: 16pt;
+  text-align: center;
+  text-decoration: underline;
+}

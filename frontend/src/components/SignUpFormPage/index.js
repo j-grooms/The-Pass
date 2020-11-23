@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
+import SplashPage from "../SplashPage";
 
 const SignUpFormPage = () => {
 	const [username, setUsername] = useState("");
@@ -13,7 +14,7 @@ const SignUpFormPage = () => {
 	const dispatch = useDispatch();
 
 	const currentUser = useSelector((state) => state.session.user);
-	if (currentUser) return <Redirect to="/" />;
+	if (currentUser) return <Redirect to="/feed" />;
 
 	const handleSubmission = (e) => {
 		e.preventDefault();
@@ -32,9 +33,10 @@ const SignUpFormPage = () => {
 
 	return (
 		<>
-			<p className="form-header">Let's Get Started!</p>
+			<SplashPage />
 			<div className="login-form-container">
 				<form onSubmit={handleSubmission}>
+					<p className="form-header">Let's Get Started!</p>
 					<ul>
 						{errors.map((error, i) => (
 							<li key={i}>{error}</li>
@@ -74,9 +76,9 @@ const SignUpFormPage = () => {
 				</form>
 			</div>
 			<div className="form-links">
-				<Link to="/login" className="login-footer-link">
+				{/* <Link to="/login" className="login-footer-link">
 					Already Have an Account?
-				</Link>
+				</Link> */}
 			</div>
 		</>
 	);
