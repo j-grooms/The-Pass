@@ -81,11 +81,23 @@ router.get(
 	"/:id/comments",
 	asyncHandler(async (req, res) => {
 		const comments = await Comment.findAll({
-			where: { photoId: req.params.id },
+			where: { photoId: req.params.id }, include: [{model: User}]
 		});
-		res.send(comments);
+		const data = getCommentData(comments)
+		res.send(data);
 	})
 );
+
+const getCommentData = (comments) => {
+	let data = [];
+	comments.map(comment => data.push({
+		username: comment.User.username,
+		comment: comment.comment,
+		createdAt: comment.createdAt
+	}))
+	// console.log(data)
+	return data;
+}
 
 // Return fileNames associated with a particular Tag
 const getTagData = (tags) => {
