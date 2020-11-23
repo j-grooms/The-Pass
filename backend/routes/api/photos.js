@@ -26,12 +26,10 @@ router.get(
 
 // Get all albums associated with specific user
 router.get(
-	"/:id/albums",
+	"/:id(\\d+)/albums",
 	asyncHandler(async (req, res) => {
 		const albums = await Album.findAll({ where: { userId: req.params.id } });
-		// console.log(albums)
 		const data = getAlbumData(albums, req.params.id);
-		console.log("data", data);
 		res.send(data);
 	})
 );
@@ -59,7 +57,6 @@ const getAlbumData = (albums, userId) => {
 // Send minimum amount of photo data back to front-end
 const getPhotoData = (photos) => {
 	let fileData = [];
-	// console.log(photos[1].dataValues.fileName)
 	photos.map((photo) =>
 		fileData.push({
 			photoId: photo.dataValues.id,
