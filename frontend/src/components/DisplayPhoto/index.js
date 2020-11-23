@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import * as photoActions from "../../store/photos";
+import * as commentActions from "../../store/comments"
 import Photo from "../Photo";
 import "./displayPhoto.css";
 
@@ -11,10 +12,11 @@ const DisplayPhoto = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+    dispatch(commentActions.getPhotoComments(id)).catch(res => console.log("COMMENT ERROR"))
 		return dispatch(photoActions.getPhotosByUser(id)).catch((res) =>
 			console.log("Error")
 		);
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   useEffect(() => {}, [name])
 
