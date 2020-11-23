@@ -1,54 +1,68 @@
 .display-container {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 5px;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
+	max-width: 900px;
+	margin: 50px auto;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 5px;
 }
 
 .other-photos-header {
-  color: white;
-  font-size: 18px;
-  text-align: center;
-  max-width: 300px;
-  margin: 0px auto;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 10px 10px 0px 0px;
+	color: white;
+	font-size: 16pt;
+	text-align: center;
+	max-width: 300px;
+	margin: 0px auto;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 10px;
+	border-radius: 10px 10px 0px 0px;
 }
 
 .preview-container {
-  margin: 0px auto;
-  max-width: 1250px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+	margin: 0px auto;
+	max-width: 1250px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 
 .preview-photo {
-  max-width: 200px;
-  max-height: 100px;
-  overflow: hidden;
-  padding: 3px;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.8);
-  margin-bottom: 50px;
-  background-color: rgba(0, 0, 0, 0.8);
+	max-width: 200px;
+	max-height: 100px;
+	overflow: hidden;
+	padding: 3px;
+	border-bottom: 3px solid rgba(0, 0, 0, 0.8);
+	margin-bottom: 50px;
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .comment-user {
-  color: white;
-  font-size: 14pt;
+	color: white;
+	font-size: 14pt;
+	text-decoration: underline;
+	padding-top: 10px;
 }
 
 .comment-content {
-  color: white;
-  font-size: 12pt;
+	color: white;
+	font-size: 12pt;
+}
+
+.comments-header {
+	color: white;
+	font-size: 16pt;
+	text-align: center;
+	max-width: 200px;
+	margin: 0px auto;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 10px;
+	border-radius: 10px 10px 0px 0px;
 }
 
 .comments-container {
-  max-width: 400px;
-  background-color: rgba(0, 0, 0, 0.8);
-  margin: 0px auto;
-
+	max-width: 400px;
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 0px 15px 15px 15px;
+  margin: 0px auto 20px auto;
+  border-radius: 5px;
 }

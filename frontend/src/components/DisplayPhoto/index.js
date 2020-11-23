@@ -33,7 +33,7 @@ const DisplayPhoto = () => {
 	return (
 		statePhotos &&
 		comments && (
-			<>
+			<div className="grid-div">
 				<div className="display-container">
 					<img
 						className="display-photo"
@@ -41,6 +41,7 @@ const DisplayPhoto = () => {
 						alt="feed"
 					/>
 				</div>
+        <p className="comments-header">Comments</p>
 				<div className="comments-container">
 					{console.log("COMMENTS", comments)}
 					{comments.data.map((comment) => (
@@ -60,7 +61,7 @@ const DisplayPhoto = () => {
 						</div>
 					))}
 				</div>
-			</>
+			</div>
 		)
 	);
 };
