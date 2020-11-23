@@ -5,3 +5,30 @@
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
 }
+
+.other-photos-header {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  max-width: 400px;
+  margin: 0px auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-photo {
+  max-width: 200px;
+  max-height: 100px;
+  overflow: hidden;
+  padding: 3px;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.8);
+  margin-bottom: 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
