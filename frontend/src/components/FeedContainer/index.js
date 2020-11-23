@@ -28,7 +28,7 @@ const FeedContainer = () => {
 				{console.log(statePhotos.photos)}
 				{statePhotos.photos.map((photo) => (
 					<div className="feed-item">
-						<Link to={`${photo.userId}/${photo.filename}`}>
+						<Link to={`/${photo.userId}/${photo.filename}`}>
 							<Photo photo={photo.filename} />
 						</Link>
 					</div>
