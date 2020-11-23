@@ -2,7 +2,7 @@ import { fetch } from "./csrf";
 // import sessionReducer from "./session";
 
 const GET_ALL = "photos/getAll";
-const GET_USER_PHOTOS = "photos/getByUser"
+const GET_USER_PHOTOS = "photos/getByUser";
 
 // action creator modifies store
 const allPhotos = (photos) => {
