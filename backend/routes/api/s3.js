@@ -26,7 +26,7 @@ const s3 = new AWS.S3();
 //POST method route for uploading file
 router.post('/post_file', upload.single("img"), function (req, res) {
   // console.log("USER", req.)
-
+  console.log(req.currentUser)
   // Multer middleware adds file to request object.
   // uploadFile(req.file.path, req.file.filename ,res);
   res.end()
