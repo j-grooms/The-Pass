@@ -4,11 +4,12 @@ const multer = require('multer')
 const AWS = require('aws-sdk');
 const fs = require('fs');
 const keys = require('../../keys')
+const path = require('path')
 
 const storage = multer.diskStorage({
 	destination: "./uploads",
 	filename: function (req, file, cb) {
-		cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
+		cb(null, "IMG-" + Date.now() + path.extname(file.originalname));
 	},
 });
 
@@ -24,10 +25,10 @@ const s3 = new AWS.S3();
 
 //POST method route for uploading file
 router.post('/post_file', upload.single("img"), function (req, res) {
-  console.log(req.body)
-  //Multer middleware adds file(in case of single file ) or files(multiple files) object to the request object.
-  //req.file is the demo_file
-  uploadFile(req.body.img.path, req.body.img.filename ,res);
+  // console.log("USER", req.)
+
+  // Multer middleware adds file to request object.
+  // uploadFile(req.file.path, req.file.filename ,res);
   res.end()
 })
 
