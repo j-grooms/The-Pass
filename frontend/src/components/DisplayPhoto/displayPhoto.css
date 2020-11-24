@@ -80,10 +80,7 @@
   grid-area: photo;
 }
 .grid-comments {
-  margin: auto 250px auto 0px;
-  /* max-width: 300px; */
-  /* margin: auto; */
-  /* padding-right: 250px; */
+  margin: auto 250px auto 50px;
   grid-area: comments;
 }
 .grid-other {

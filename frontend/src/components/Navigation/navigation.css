@@ -40,24 +40,49 @@
 
 .profile-dropdown {
   position: absolute;
-  top: 40px;
-  right: 8px;
+  top: 35px;
+  right: 30px;
   border: 1px solid black;
-  border-radius: 3px;
+  border-radius: 0px 0px 5px 5px;
   margin: 5px 0px;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 5px;
   margin-bottom: 5px;
-  width: 120px;
-  background-color: rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .profile-dropdown > li {
   text-align: center;
   list-style-type: none;
-  border-bottom: 1px solid black;
-  margin: 5px 0px;
+  /* border-bottom: 1px solid black; */
+  color: white;
+  margin: 0px 20px;
   width: 100px;
+}
+
+.nav-submit {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 2px solid #1C38E9;
+	border-radius: 25px;
+	width: 100px;
+	height: 25px;
+	color: white;
+	font-weight: 500;
+	background-color: #1C38E9;
+  text-align: center;
+  margin: 0px 20px;
+}
+
+.nav-submit:focus {
+  outline: none;
+}
+
+.nav-submit:hover {
+	transform: translateY(-1px);
 }
