@@ -1,17 +1,30 @@
 .form-div {
-	background-color: red;
+	background-color: rgba(0, 0, 0, 0.8);
+  max-width: 550px;
+  border-radius: 3px;
+	margin: 0px auto;
+	padding: 20px;
 }
 
 .file-header {
 	text-align: center;
 	color: white;
 	padding: 15px;
+	max-width: 350px;
+	margin: 50px auto 0px auto;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 10px 10px 0px 0px;
+}
+
+.file-preview-text {
+	text-align: center;
+	color: white;
 }
 
 .user-image {
 	max-width: 500px;
 	padding: 3px;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: black;
 	margin: 0px auto;
 }
 
@@ -24,7 +37,35 @@
 	margin: 0px auto;
 }
 
-.file-field {
+input[type="file"] {
+	position: absolute;
+	z-index: -1;
+	top: 6px;
+	left: 0;
+	font-size: 15px;
+	color: rgb(153, 153, 153);
+}
+.button-wrap {
+	position: relative;
+}
+.upload-choice {
+	margin-top: 20px;
+	padding-top: 5px;
+	/* margin-bottom: 10px; */
+	border: 2px solid #1c38e9;
+	border-radius: 25px;
+	width: 120px;
+	height: 28px;
 	color: white;
-	padding-left: 50px;
+	font-weight: 500;
+	background-color: #1c38e9;
+	text-align: center;
+}
+
+.upload-choice:focus {
+	outline: none;
+}
+
+.upload-choice:hover {
+	transform: translateY(-1px);
 }

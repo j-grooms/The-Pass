@@ -47,6 +47,8 @@ const ImageUploadForm = () => {
 
 
 	return (
+    <div>
+      <p className="file-header">Please select your photo below:</p>
 		<div className="form-div">
 			{image ? (
 				<img
@@ -55,16 +57,18 @@ const ImageUploadForm = () => {
 					alt="userPhoto"
 				/>
 			) : (
-				<p className="file-header">Please upload a photo below</p>
+        <p className="file-preview-text">After selecting, a preview will appear here</p>
 			)}
 			<form onSubmit={handleSubmit} className="upload-form">
-				<input type="file" accept="image/*" onChange={handleChange} className="file-field" />
+        <label className="upload-choice" for="upload">Select Photo</label>
+				<input id="upload" type="file" accept="image/*" onChange={handleChange} className="file-field" />
 				<button type="submit" className="login-submit">
 					Submit
 				</button>
 			</form>
 
 		</div>
+    </div>
 	);
 };
 
