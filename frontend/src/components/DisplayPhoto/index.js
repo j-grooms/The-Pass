@@ -34,32 +34,38 @@ const DisplayPhoto = () => {
 		statePhotos &&
 		comments && (
 			<div className="grid-div">
-				<div className="display-container">
-					<img
-						className="display-photo"
-						src={`https://s3.us-east-2.amazonaws.com/the-pass/${name}`}
-						alt="feed"
-					/>
+				<div className="grid-display">
+					<div className="display-container">
+						<img
+							className="display-photo"
+							src={`https://s3.us-east-2.amazonaws.com/the-pass/${name}`}
+							alt="feed"
+						/>
+					</div>
 				</div>
-        <p className="comments-header">Comments</p>
-				<div className="comments-container">
-					{console.log("COMMENTS", comments)}
-					{comments.data.map((comment) => (
-						<div className="comment">
-							<p className="comment-user">{comment.username}</p>
-							<p className="comment-content">{comment.comment}</p>
-						</div>
-					))}
+				<div className="grid-comments">
+					<p className="comments-header">Comments</p>
+					<div className="comments-container">
+						{console.log("COMMENTS", comments)}
+						{comments.data.map((comment) => (
+							<div className="comment">
+								<p className="comment-user">{comment.username}</p>
+								<p className="comment-content">{comment.comment}</p>
+							</div>
+						))}
+					</div>
 				</div>
-				<p className="other-photos-header">All photos by this user:</p>
-				<div className="preview-container">
-					{statePhotos.photos.map((photo) => (
-						<div className="preview-photo">
-							<Link to={`/${photo.userId}/${photo.filename}`}>
-								<Photo photo={photo.filename} />
-							</Link>
-						</div>
-					))}
+				<div className="grid-other">
+					<p className="other-photos-header">All photos by this user:</p>
+					<div className="preview-container">
+						{statePhotos.photos.map((photo) => (
+							<div className="preview-photo">
+								<Link to={`/${photo.userId}/${photo.filename}`}>
+									<Photo photo={photo.filename} />
+								</Link>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		)
