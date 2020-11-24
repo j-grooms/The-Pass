@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Redirect } from "react-router-dom";
 import { fetch } from "../../store/csrf";
 import * as photoActions from "../../store/photos";
 import Photo from "../Photo";
@@ -12,6 +12,8 @@ const DisplayPhoto = () => {
 	const [comments, setComments] = useState("");
 	const { id, name } = useParams();
 	const dispatch = useDispatch();
+	const currentUser = useSelector((state) => state.session.user);
+
 
 	useEffect(() => {
 		// dispatch(commentActions.getPhotoComments(id)).catch((res) =>
@@ -27,7 +29,9 @@ const DisplayPhoto = () => {
 		);
 	}, [dispatch, id, name]);
 
-	useEffect(() => {}, [name]);
+	if (!currentUser) return <Redirect to="/" />;
+
+	// useEffect(() => {}, [name]);
 
 	return (
 		statePhotos &&

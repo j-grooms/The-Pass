@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { fetch } from "../../store/csrf";
+import {useSelector} from 'react-redux'
 import "./imageUploadForm.css";
+import { Redirect } from "react-router-dom";
 
 const ImageUploadForm = () => {
 	const [image, setImage] = useState("");
-	const [imageurl, setImageurl] = useState("");
+  const [imageurl, setImageurl] = useState("");
+  const currentUser = useSelector((state) => state.session.user);
+
+  if (!currentUser) return <Redirect to="/" />
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
