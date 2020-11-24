@@ -14,7 +14,6 @@ const ImageUploadForm = () => {
 		const data = new FormData();
 		if (image) {
 			data.append("img", image);
-			// data['img'] = image
 			for (let value of data.values()) {
 				console.log("data", value);
 			}
@@ -44,31 +43,87 @@ const ImageUploadForm = () => {
 		}
 	};
 
-
-
 	return (
-    <div>
-      <p className="file-header">Please select your photo below:</p>
-		<div className="form-div">
-			{image ? (
-				<img
-					className="user-image"
-					src={imageurl}
-					alt="userPhoto"
-				/>
-			) : (
-        <p className="file-preview-text">After selecting, a preview will appear here</p>
-			)}
-			<form onSubmit={handleSubmit} className="upload-form">
-        <label className="upload-choice" for="upload">Select Photo</label>
-				<input id="upload" type="file" accept="image/*" onChange={handleChange} className="file-field" />
-				<button type="submit" className="login-submit">
-					Submit
-				</button>
-			</form>
-
+		<div>
+			<p className="file-header">Please select your photo below:</p>
+			<div className="form-div">
+				{image ? (
+					<img className="user-image" src={imageurl} alt="userPhoto" />
+				) : (
+					<p className="file-preview-text">
+						After selecting, a preview will appear here
+					</p>
+				)}
+				<form onSubmit={handleSubmit} className="upload-form">
+					<label className="upload-choice" for="upload">
+						Select Photo
+					</label>
+					<input
+						id="upload"
+						type="file"
+						accept="image/*"
+						onChange={handleChange}
+						className="file-field"
+					/>
+					{image? (<fieldset className="tags-fieldset">
+						<legend className="legend-text">
+							Help others find your image! Select a tag (or more):
+						</legend>
+						<div className="check-div">
+							<input className="tag-checkbox" type="checkbox" id="breakfast" />
+							<label className="tag-label" for="breakfast">
+								Breakfast
+							</label>
+						</div>
+						<div className="check-div">
+							<input className="tag-checkbox" type="checkbox" id="entree" />
+							<label className="tag-label" for="entree">
+								Entree
+							</label>
+						</div>
+						<div className="check-div">
+							<input className="tag-checkbox" type="checkbox" id="dessert" />
+							<label className="tag-label" for="dessert">
+								Dessert
+							</label>
+						</div>
+						<div className="check-div">
+							<input className="tag-checkbox" type="checkbox" id="beef" />
+							<label className="tag-label" for="beef">
+								Beef
+							</label>
+						</div>
+						<div className="check-div">
+							<input className="tag-checkbox" type="checkbox" id="seafood" />
+							<label className="tag-label" for="seafood">
+								Seafood
+							</label>
+						</div>
+						<div className="check-div">
+							<input className="tag-checkbox" type="checkbox" id="chicken" />
+							<label className="tag-label" for="chicken">
+								Chicken
+							</label>
+						</div>
+						<div className="check-div">
+							<input className="tag-checkbox" type="checkbox" id="salad" />
+							<label className="tag-label" for="salad">
+								Salad
+							</label>
+						</div>
+						<div className="check-div">
+							<input className="tag-checkbox" type="checkbox" id="lamb" />
+							<label className="tag-label" for="lamb">
+								Lamb
+							</label>
+						</div>
+					</fieldset>) : (<></>) }
+					<button type="submit" className="login-submit">
+						Submit
+					</button>
+				</form>
+			</div>
 		</div>
-    </div>
 	);
 };
 

@@ -69,3 +69,33 @@ input[type="file"] {
 .upload-choice:hover {
 	transform: translateY(-1px);
 }
+
+.tags-fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 10px;
+  /* margin-left: 10px; */
+}
+
+.check-div {
+  width: 100px;
+}
+
+.tag-checkbox {
+  margin-right: 10px
+}
+
+.tag-label{
+  color: white;
+}
+
+.legend-text {
+	text-align: center;
+  color: white;
+  padding-top: 10px;
+}
+
+.checkboxes {
+  margin: 0px auto;
+}
