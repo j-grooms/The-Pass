@@ -20,6 +20,7 @@ export const login = (user) => async (dispatch) => {
 	const { credential, password } = user;
 	const response = await fetch("/api/session", {
 		method: "POST",
+		headers: {"Content-Type": "application/json"},
 		body: JSON.stringify({
 			credential,
 			password,
@@ -37,14 +38,15 @@ export const restoreUser = () => async(dispatch) => {
 
 export const signUp = (user) => async(dispatch) => {
 	const { username, email, password } = user
-	const res = await fetch('/api/users', {
-		method: 'POST',
+	const res = await fetch("/api/users", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
 			username,
 			email,
-			password
-		})
-	})
+			password,
+		}),
+	});
 	dispatch(setUser(res.data.user))
 	return res;
 }
@@ -52,6 +54,7 @@ export const signUp = (user) => async(dispatch) => {
 export const logout = () => async (dispatch) => {
 	const response = await fetch("/api/session", {
 		method: "DELETE",
+		headers: { "Content-Type": "application/json" },
 	});
 	dispatch(removeUser());
 	return response;
