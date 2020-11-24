@@ -42,7 +42,6 @@
 	position: absolute;
 	top: 35px;
 	right: 30px;
-	border: 1px solid black;
 	border-radius: 0px 0px 5px 5px;
 	margin: 5px 0px;
 	display: flex;
@@ -53,7 +52,7 @@
 	margin-bottom: 5px;
 	width: 500px;
 	height: 30px;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color:  #212124;
 }
 
 .profile-dropdown > li {
