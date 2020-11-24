@@ -27,22 +27,16 @@ const s3 = new AWS.S3();
 router.post('/post_file', upload.single("img"), function (req, res) {
 
   // Multer middleware adds file to request object.
-  // uploadFile(req.file.path, req.file.filename ,res);
-  res.json(req.file.filename)
+  uploadFile(req.file.path, req.file.filename ,res);
+
 })
 
-//GET method route for downloading/retrieving file
-// router.get('/get_file/:file_name',(req,res)=>{
-//   console.log(req.params.file_name)
-//   // console.log(keys.iam_secret)
-//   // retrieveFile(req.params.file_name, res);
-// });
 
 router.get('/', (req, res) => {
   res.json('connected')
 });
 
-// Functions
+
 
 //The uploadFile function
 function uploadFile(source,targetName,res){
@@ -60,9 +54,10 @@ function uploadFile(source,targetName,res){
             return res.send({success:false});
           }
           else{
-            // fs.unlink(source);// Deleting the file from uploads folder(Optional).Do Whatever you prefer.
+            fs.unlinkSync(source);
+            // Deleting the file from uploads folder(Optional).Do Whatever you prefer.
             console.log('Successfully uploaded the file');
-            return res.send({success:true});
+            return res.json(targetName);
           }
         });
       }
@@ -72,22 +67,6 @@ function uploadFile(source,targetName,res){
     });
   }
 
-//The retrieveFile function
-// function retrieveFile(filename,res){
 
-//   const getParams = {
-//     Bucket: 'the-pass',
-//     Key: `/photos/${filename}`
-//   };
-
-//   s3.getObject(getParams, function(err, data) {
-//     if (err){
-//       return res.status(400).send({success:false,err:err});
-//     }
-//     else{
-//       return res.send(data.Body);
-//     }
-//   });
-// }
 
 module.exports = router;

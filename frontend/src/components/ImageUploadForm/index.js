@@ -1,38 +1,60 @@
 import React, { useState } from "react";
 import { fetch } from "../../store/csrf";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import "./imageUploadForm.css";
 import { Redirect } from "react-router-dom";
 
 const ImageUploadForm = () => {
 	const [image, setImage] = useState("");
-  const [imageurl, setImageurl] = useState("");
-  const currentUser = useSelector((state) => state.session.user);
+	const [imageurl, setImageurl] = useState("");
+	const [breakfast, setBreakfast] = useState(false);
+	const [dessert, setDessert] = useState(false);
+	const [beef, setBeef] = useState(false);
+	const [entree, setEntree] = useState(false);
+	const [seafood, setSeafood] = useState(false);
+	const [chicken, setChicken] = useState(false);
+	const [salad, setSalad] = useState(false);
+	const [lamb, setLamb] = useState(false);
+	const currentUser = useSelector((state) => state.session.user);
 
-  if (!currentUser) return <Redirect to="/" />
+	if (!currentUser) return <Redirect to="/" />;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// console.log(image)
+
 		// attach this to the body, no need to stringify
 		// Content-Type: <for images>
 		const data = new FormData();
 		if (image) {
 			data.append("img", image);
-			for (let value of data.values()) {
-				console.log("data", value);
-			}
 			submitS3(data);
 		}
+		return <Redirect to="/" />;
 	};
 
 	const submitS3 = async (data) => {
-		console.log("DATA", data);
+		// console.log("DATA", data);
 		const res = await fetch("/api/s3/post_file", {
 			method: "POST",
 			// headers: { "Content-Type": "image/jpg" },
-			body:  data , currentUser
+			body: data,
 		});
+		console.log(currentUser.id);
+		console.log(res.data);
+		const dbData = {
+			fileName: res.data,
+			userId: currentUser.id,
+		};
+		createPhoto(dbData);
+	};
+
+	const createPhoto = async (data) => {
+		const res = await fetch("/api/photos/create", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(data),
+		});
+		console.log(res);
 	};
 
 	const handleChange = (e) => {
@@ -70,59 +92,103 @@ const ImageUploadForm = () => {
 						onChange={handleChange}
 						className="file-field"
 					/>
-					{image? (<fieldset className="tags-fieldset">
-						<legend className="legend-text">
-							Help others find your image! Select a tag (or more):
-						</legend>
-						<div className="check-div">
-							<input className="tag-checkbox" type="checkbox" id="breakfast" />
-							<label className="tag-label" for="breakfast">
-								Breakfast
-							</label>
-						</div>
-						<div className="check-div">
-							<input className="tag-checkbox" type="checkbox" id="entree" />
-							<label className="tag-label" for="entree">
-								Entree
-							</label>
-						</div>
-						<div className="check-div">
-							<input className="tag-checkbox" type="checkbox" id="dessert" />
-							<label className="tag-label" for="dessert">
-								Dessert
-							</label>
-						</div>
-						<div className="check-div">
-							<input className="tag-checkbox" type="checkbox" id="beef" />
-							<label className="tag-label" for="beef">
-								Beef
-							</label>
-						</div>
-						<div className="check-div">
-							<input className="tag-checkbox" type="checkbox" id="seafood" />
-							<label className="tag-label" for="seafood">
-								Seafood
-							</label>
-						</div>
-						<div className="check-div">
-							<input className="tag-checkbox" type="checkbox" id="chicken" />
-							<label className="tag-label" for="chicken">
-								Chicken
-							</label>
-						</div>
-						<div className="check-div">
-							<input className="tag-checkbox" type="checkbox" id="salad" />
-							<label className="tag-label" for="salad">
-								Salad
-							</label>
-						</div>
-						<div className="check-div">
-							<input className="tag-checkbox" type="checkbox" id="lamb" />
-							<label className="tag-label" for="lamb">
-								Lamb
-							</label>
-						</div>
-					</fieldset>) : (<></>) }
+					{image ? (
+						<fieldset className="tags-fieldset">
+							<legend className="legend-text">
+								Help others find your image! Select a tag (or more):
+							</legend>
+							<div className="check-div">
+								<input
+									className="tag-checkbox"
+									type="checkbox"
+									checked={breakfast}
+									onChange={() => setBreakfast(!breakfast)}
+								/>
+								<label className="tag-label" for="breakfast">
+									Breakfast
+								</label>
+							</div>
+							<div className="check-div">
+								<input
+									className="tag-checkbox"
+									type="checkbox"
+									checked={entree}
+									onChange={() => setEntree(!entree)}
+								/>
+								<label className="tag-label" for="entree">
+									Entree
+								</label>
+							</div>
+							<div className="check-div">
+								<input
+									className="tag-checkbox"
+									type="checkbox"
+									checked={dessert}
+									onChange={() => setDessert(!dessert)}
+								/>
+								<label className="tag-label" for="dessert">
+									Dessert
+								</label>
+							</div>
+							<div className="check-div">
+								<input
+									className="tag-checkbox"
+									type="checkbox"
+									checked={beef}
+									onChange={() => setBeef(!beef)}
+								/>
+								<label className="tag-label" for="beef">
+									Beef
+								</label>
+							</div>
+							<div className="check-div">
+								<input
+									className="tag-checkbox"
+									type="checkbox"
+									checked={seafood}
+									onChange={() => setSeafood(!seafood)}
+								/>
+								<label className="tag-label" for="seafood">
+									Seafood
+								</label>
+							</div>
+							<div className="check-div">
+								<input
+									className="tag-checkbox"
+									type="checkbox"
+									checked={chicken}
+									onChange={() => setChicken(!chicken)}
+								/>
+								<label className="tag-label" for="chicken">
+									Chicken
+								</label>
+							</div>
+							<div className="check-div">
+								<input
+									className="tag-checkbox"
+									type="checkbox"
+									checked={salad}
+									onChange={() => setSalad(!salad)}
+								/>
+								<label className="tag-label" for="salad">
+									Salad
+								</label>
+							</div>
+							<div className="check-div">
+								<input
+									className="tag-checkbox"
+									type="checkbox"
+									checked={lamb}
+									onChange={() => setLamb(!lamb)}
+								/>
+								<label className="tag-label" for="lamb">
+									Lamb
+								</label>
+							</div>
+						</fieldset>
+					) : (
+						<></>
+					)}
 					<button type="submit" className="login-submit">
 						Submit
 					</button>
