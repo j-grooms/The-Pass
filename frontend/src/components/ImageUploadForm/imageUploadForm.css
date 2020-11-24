@@ -1,0 +1,30 @@
+.form-div {
+	background-color: red;
+}
+
+.file-header {
+	text-align: center;
+	color: white;
+	padding: 15px;
+}
+
+.user-image {
+	max-width: 500px;
+	padding: 3px;
+	background-color: rgba(0, 0, 0, 0.8);
+	margin: 0px auto;
+}
+
+.upload-form {
+	max-width: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: 0px auto;
+}
+
+.file-field {
+	color: white;
+	padding-left: 50px;
+}

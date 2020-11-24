@@ -6,12 +6,11 @@ const fs = require('fs');
 const keys = require('../../keys')
 
 const storage = multer.diskStorage({
-  destination: "./uploads",
-  filename: function(req, file, cb) {
-    cb(null, file.originalname )
-  }
-
-})
+	destination: "./uploads",
+	filename: function (req, file, cb) {
+		cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
+	},
+});
 
 const upload = multer({ storage: storage });
 
@@ -29,6 +28,7 @@ router.post('/post_file', upload.single("img"), function (req, res) {
   //Multer middleware adds file(in case of single file ) or files(multiple files) object to the request object.
   //req.file is the demo_file
   // uploadFile(req.body.img.path, req.body.img.filename ,res);
+  res.end()
 })
 
 //GET method route for downloading/retrieving file

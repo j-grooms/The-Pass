@@ -1,72 +1,71 @@
-import React, {useState} from 'react';
-import { fetch } from '../../store/csrf'
+import React, { useState } from "react";
+import { fetch } from "../../store/csrf";
+import "./imageUploadForm.css";
 
 const ImageUploadForm = () => {
-  const [image, setImage] = useState('');
-  const [imageurl, setImageurl] = useState('')
+	const [image, setImage] = useState("");
+	const [imageurl, setImageurl] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // console.log(image)
-    // attach this to the body, no need to stringify
-    // Content-Type: <for images>
-    const data = new FormData();
-    if (image) {
-      // data.append('img', image)
-      data['img'] = image
-      console.log("data", data)
-      submitS3(data);
-    }
-  }
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// console.log(image)
+		// attach this to the body, no need to stringify
+		// Content-Type: <for images>
+		const data = new FormData();
+		if (image) {
+			data.append("img", image);
+			// data['img'] = image
+			for (let value of data.values()) {
+				console.log("data", value);
+			}
+			submitS3(data);
+		}
+	};
 
-  const submitS3 = async(data) => {
-    const res = await fetch("/api/s3/post_file", {
+	const submitS3 = async (data) => {
+		console.log("DATA", data);
+		const res = await fetch("/api/s3/post_file", {
 			method: "POST",
-			headers: { "Content-Type" : "image/jpg" },
-			body:{data} ,
+			headers: { "Content-Type": "image/jpg" },
+			body: { data },
 		});
-  }
+	};
 
-  const handleChange = (e) => {
+	const handleChange = (e) => {
+		const file = e.target.files[0];
+		const fileReader = new FileReader();
+		setImage(file);
+		console.log(image);
+		if (file) {
+			fileReader.readAsDataURL(file);
+			fileReader.onloadend = () => {
+				setImageurl(fileReader.result);
+			};
+		}
+	};
 
-    const file = e.target.files[0]
-    const fileReader = new FileReader()
-    setImage(file);
-    console.log(image)
-    if (file) {
-      fileReader.readAsDataURL(file);
-      fileReader.onloadend = () => {
-        setImageurl(fileReader.result);
-      }
-    }
-  }
 
-  // const fileName = "lobstah.jpg"
 
-  return (
-		<div>
+	return (
+		<div className="form-div">
 			{image ? (
 				<img
+					className="user-image"
 					src={imageurl}
 					alt="userPhoto"
-					style={{ width: "300px", padding: "10px" }}
-        />
-
+				/>
 			) : (
-				<p>Please upload a photo below</p>
+				<p className="file-header">Please upload a photo below</p>
 			)}
-			<form
-        encType="multipart/form-data"
-        onSubmit = { handleSubmit }
-			>
-				<input type="file" accept="image/*" onChange={handleChange} />
+			<form onSubmit={handleSubmit} className="upload-form">
+				<input type="file" accept="image/*" onChange={handleChange} className="file-field" />
 				<button type="submit" className="login-submit">
 					Submit
 				</button>
 			</form>
-      {/* <img src={`https://s3.us-east-2.amazonaws.com/the-pass/${fileName}`} /> */}
+
 		</div>
 	);
-}
+};
 
 export default ImageUploadForm;
