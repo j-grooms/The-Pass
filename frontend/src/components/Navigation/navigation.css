@@ -1,86 +1,86 @@
 .nav-container {
-  background-color: #212124;
-  padding: 8px;
-  height: 33px;
+	background-color: #212124;
+	padding: 8px;
+	height: 33px;
 }
 
 .nav-holder {
-  position: relative;
+	position: relative;
 }
 
 .nav-link {
-  text-decoration: none;
-  color: white;
-  height: 50px;
-  align-self: center;
+	text-decoration: none;
+	color: white;
+	height: 50px;
+	align-self: center;
 }
 
 .active {
-  color: #e91c68;
+	color: #e91c68;
 }
 
 .nav-list-item {
-  list-style-type: none;
-  line-height: 33px;
-  text-align: center;
+	list-style-type: none;
+	line-height: 33px;
+	text-align: center;
 }
 
 .nav-links {
-  display: flex;
-  justify-content: space-between;
-  width: 600px;
-  margin: 0px auto;
+	display: flex;
+	justify-content: space-between;
+	width: 600px;
+	margin: 0px auto;
 }
 
 .nav-user-icon {
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
+	border: none;
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
 }
 
 .profile-dropdown {
-  position: absolute;
-  top: 35px;
-  right: 30px;
-  border: 1px solid black;
-  border-radius: 0px 0px 5px 5px;
-  margin: 5px 0px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 5px;
-  margin-bottom: 5px;
-  width: 500px;
-  height: 30px;
-  background-color: rgba(0, 0, 0, 0.8);
+	position: absolute;
+	top: 35px;
+	right: 30px;
+	border: 1px solid black;
+	border-radius: 0px 0px 5px 5px;
+	margin: 5px 0px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 5px;
+	margin-bottom: 5px;
+	width: 500px;
+	height: 30px;
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .profile-dropdown > li {
-  text-align: center;
-  list-style-type: none;
-  /* border-bottom: 1px solid black; */
-  color: white;
-  margin: 0px 20px;
-  width: 100px;
+	text-align: center;
+	list-style-type: none;
+	/* border-bottom: 1px solid black; */
+	color: white;
+	margin: 0px 20px;
+	width: 100px;
 }
 
 .nav-submit {
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border: 2px solid #1C38E9;
+	border: 2px solid #1c38e9;
 	border-radius: 25px;
 	width: 100px;
 	height: 25px;
 	color: white;
 	font-weight: 500;
-	background-color: #1C38E9;
-  text-align: center;
-  margin: 0px 20px;
+	background-color: #1c38e9;
+	text-align: center;
+	margin: 0px 20px;
 }
 
 .nav-submit:focus {
-  outline: none;
+	outline: none;
 }
 
 .nav-submit:hover {

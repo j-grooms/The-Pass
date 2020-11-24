@@ -7,7 +7,7 @@
 	justify-content: center;
 	border: 1px solid black;
 	border-radius: 3px;
-	background-image: url('../../images/garlic.jpg');
+	background-image: url("../../images/garlic.jpg");
 	background-size: 360px 360px;
 	/* background-color: rgba(0, 0, 0, 0.1); */
 }
@@ -24,7 +24,6 @@
 	margin: 0px auto;
 	color: white;
 	/* background-color: rgba(0, 0, 0, 0.5); */
-
 }
 
 .login-form-label {
@@ -33,7 +32,7 @@
 	text-align: center;
 	font-size: 14pt;
 	color: white;
-	background-color: rgba(0, 0, 0, 0.5)
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .login-footer-link {
@@ -59,18 +58,18 @@
 .login-submit {
 	margin-top: 20px;
 	margin-bottom: 10px;
-	border: 2px solid #1C38E9;
+	border: 2px solid #1c38e9;
 	border-radius: 25px;
 	width: 75px;
 	height: 25px;
 	color: white;
 	font-weight: 500;
-	background-color: #1C38E9;
+	background-color: #1c38e9;
 	text-align: center;
 }
 
 .login-submit:focus {
-  outline: none;
+	outline: none;
 }
 
 .login-submit:hover {

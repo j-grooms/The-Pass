@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetch } from "../../store/csrf";
 import * as photoActions from "../../store/photos";
-import * as commentActions from "../../store/comments";
 import Photo from "../Photo";
 import "./displayPhoto.css";
 

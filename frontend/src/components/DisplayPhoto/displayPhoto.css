@@ -63,26 +63,26 @@
 	width: 400px;
 	background-color: rgba(0, 0, 0, 0.8);
 	padding: 0px 15px 15px 15px;
-  margin: 0px auto 20px auto;
-  border-radius: 5px;
+	margin: 0px auto 20px auto;
+	border-radius: 5px;
 }
 
 .grid-div {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: 3fr 1fr;
-  grid-template-areas:
-    "photo comments"
-    "other other";
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	grid-template-rows: 3fr 1fr;
+	grid-template-areas:
+		"photo comments"
+		"other other";
 }
 
 .grid-display {
-  grid-area: photo;
+	grid-area: photo;
 }
 .grid-comments {
-  margin: auto 250px auto 50px;
-  grid-area: comments;
+	margin: auto 250px auto 50px;
+	grid-area: comments;
 }
 .grid-other {
-  grid-area: other;
+	grid-area: other;
 }

@@ -14,18 +14,7 @@ const Navigation = () => {
 					</NavLink>
 				</li>
 				{!currentUser ? (
-					<>
-						{/* <li className="nav-list-item">
-							<NavLink to="signup" className="nav-link">
-								Sign Up
-							</NavLink>
-						</li>
-						<li className="nav-list-item">
-							<NavLink to="/login" className="nav-link">
-								Log In
-							</NavLink>
-						</li> */}
-					</>
+					<></>
 				) : (
 					<>
 						<li className="nav-list-item">
