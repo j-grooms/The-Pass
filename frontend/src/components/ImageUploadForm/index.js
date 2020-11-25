@@ -7,33 +7,37 @@ import { Redirect } from "react-router-dom";
 const ImageUploadForm = () => {
 	const [image, setImage] = useState("");
 	const [imageurl, setImageurl] = useState("");
+
 	const [breakfast, setBreakfast] = useState(false);
 	const [dessert, setDessert] = useState(false);
-	const [beef, setBeef] = useState(false);
 	const [entree, setEntree] = useState(false);
+	const [beef, setBeef] = useState(false);
 	const [seafood, setSeafood] = useState(false);
 	const [chicken, setChicken] = useState(false);
-	const [salad, setSalad] = useState(false);
 	const [lamb, setLamb] = useState(false);
-	const currentUser = useSelector((state) => state.session.user);
+	const [salad, setSalad] = useState(false);
+
 	const tags = {
 		breakfast,
 		dessert,
-		beef,
 		entree,
-		chicken,
+		beef,
 		seafood,
-		salad,
+		chicken,
 		lamb,
+		salad,
 	};
+
+	const currentUser = useSelector((state) => state.session.user);
 	if (!currentUser) return <Redirect to="/" />;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(tags);
+
 		// attach this to the body, no need to stringify
-		// Content-Type: <for images>
 		const data = new FormData();
+
 		if (image) {
 			data.append("img", image);
 			submitS3(data);
@@ -43,10 +47,8 @@ const ImageUploadForm = () => {
 	};
 
 	const submitS3 = async (data) => {
-		// console.log("DATA", data);
 		const res = await fetch("/api/s3/post_file", {
 			method: "POST",
-			// headers: { "Content-Type": "image/jpg" },
 			body: data,
 		});
 
@@ -64,7 +66,6 @@ const ImageUploadForm = () => {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(data),
 		});
-		// const jsonRes = await res.json()
 		console.log(res.data);
 	};
 
