@@ -22,6 +22,11 @@ const Navigation = () => {
 								Upload an Image
 							</NavLink>
 						</li>
+						<li className="nav-list-item">
+							<NavLink to="/tags" className="nav-link">
+								Search by Tag
+							</NavLink>
+						</li>
 						<ProfileButton user={currentUser} />
 					</>
 				)}

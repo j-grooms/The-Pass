@@ -1,0 +1,56 @@
+.tag-form {
+	width: 500px;
+	height: 100px;
+	display: flex;
+	justify-content: space-around;
+	margin: 0px auto;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 5px;
+}
+
+.tag-form-header {
+	margin: 100px auto 0px auto;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.tag-select {
+	height: 30px;
+	margin-top: 37px;
+	width: 200px;
+}
+
+.tag-select:focus {
+	border: none;
+	outline: none;
+}
+
+.tag-search-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.tag-button {
+	margin-top: 36px;
+	margin-bottom: 10px;
+	border: 2px solid #1c38e9;
+	border-radius: 25px;
+	width: 75px;
+	height: 25px;
+	color: white;
+	font-weight: 500;
+	background-color: #1c38e9;
+	text-align: center;
+}
+
+.tag-button:focus {
+	outline: none;
+}
+
+.tag-button:hover {
+	transform: translateY(-1px);
+}

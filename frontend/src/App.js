@@ -10,6 +10,7 @@ import SignUpFormPage from "./components/SignUpFormPage";
 import UserFeed from "./components/UserFeed";
 import SplashPage from "./components/SplashPage";
 import DisplayPhoto from "./components/DisplayPhoto";
+import TagSearchPage from "./components/TagSearchPage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
 					<Route path="/signup" component={SignUpFormPage} />
 					<Route path="/upload" component={ImageUploadForm} />
 					<Route path="/feed" component={FeedContainer} />
+					<Route path="/tags" component={TagSearchPage} />
 					<Route path="/:id/:name" component={DisplayPhoto} />
 					<Route path="/:id(\d+)" component={UserFeed} />
 				</Switch>
