@@ -28,6 +28,7 @@ const ImageUploadForm = () => {
 		salad,
 	};
 
+	const [fetched, setFetched] = useState(false)
 	const currentUser = useSelector((state) => state.session.user);
 	if (!currentUser) return <Redirect to="/" />;
 
@@ -65,10 +66,14 @@ const ImageUploadForm = () => {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(data),
+		}).then((res) => {
+			setFetched(true);
+			console.log("FETCHED", fetched)
+			return res;
 		});
 
 		// res.data.id is the photoId of newly created photo
-		createTags(tags, res.data.id);
+		if (fetched) createTags(tags, res.data.id);
 	};
 
 	const createTags = async (tags, photoId) => {
@@ -84,7 +89,7 @@ const ImageUploadForm = () => {
 			tags: selectedTags,
 		};
 
-		const res = await fetch("/api/photos/create_tags", {
+		const res = await fetch("/api/photos/tags", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(dbData),

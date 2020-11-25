@@ -90,12 +90,21 @@ router.get(
 	})
 );
 
-router.post("/create_tags", asyncHandler(async (req, res) => {
+router.post("/tags", asyncHandler(async (req, res) => {
 	// console.log("SERVER TAGS" ,req.body.tags)
 	const tags = req.body.tags;
-	const userId = req.body.photoId;
+	const photoId = req.body.photoId;
 	console.log( "TAGS" ,tags)
-	console.log("USERID", userId)
+	console.log("USERID", photoId)
+	if (photoId) {
+		const createdTags = await tags.forEach(async (tagName) => {
+			await Tag.create({
+				tagName,
+				photoId,
+
+			});
+		})
+	} else {res.end()}
 	res.end()
 }))
 
