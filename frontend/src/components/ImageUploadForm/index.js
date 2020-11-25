@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { fetch } from "../../store/csrf";
 import { useSelector } from "react-redux";
+import * as submitActions from "../../store/submission"
 import "./imageUploadForm.css";
 import { Redirect } from "react-router-dom";
 
@@ -43,7 +44,7 @@ const ImageUploadForm = () => {
 			data.append("img", image);
 			submitS3(data);
 		}
-		createTags(tags);
+		// createTags(tags);
 		// return history.push("/feed");
 	};
 
@@ -51,14 +52,15 @@ const ImageUploadForm = () => {
 		const res = await fetch("/api/s3/post_file", {
 			method: "POST",
 			body: data,
+		}).then(res => {
+			const dbData = {
+				fileName: res.data,
+				userId: currentUser.id,
+			};
+
+			createPhoto(dbData);
 		});
 
-		const dbData = {
-			fileName: res.data,
-			userId: currentUser.id,
-		};
-
-		createPhoto(dbData);
 	};
 
 	const createPhoto = async (data) => {
@@ -70,10 +72,12 @@ const ImageUploadForm = () => {
 			setFetched(true);
 			// console.log("FETCHED", fetched)
 			return res;
+		}).then(res => {
+			createTags(tags, res.data.id);
 		});
 
 		// res.data.id is the photoId of newly created photo
-		if (fetched) createTags(tags, res.data.id);
+		// if (fetched) createTags(tags, res.data.id);
 	};
 
 	const createTags = async (tags, photoId) => {
