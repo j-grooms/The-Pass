@@ -66,17 +66,32 @@ const ImageUploadForm = () => {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(data),
 		});
-		console.log(res.data);
+
+		// res.data.id is the photoId of newly created photo
+		createTags(tags, res.data.id);
 	};
 
-	const createTags = (tags, photoRes) => {
+	const createTags = async (tags, photoId) => {
 		let selectedTags = [];
+		// iterate through tags and check thier individual states
+		// push only the applied tag names to the above array
 		for (let tag in tags) {
-			if (tags[tag]=== true) selectedTags.push(tag);
+			if (tags[tag] === true) selectedTags.push(tag);
 		}
-		console.log(selectedTags);
+
+		const dbData = {
+			photoId,
+			tags: selectedTags,
+		};
+
+		const res = await fetch("/api/photos/create_tags", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(dbData),
+		});
 	};
 
+	// display the image as a preview, using a filereader
 	const handleChange = (e) => {
 		const file = e.target.files[0];
 		const fileReader = new FileReader();
@@ -113,6 +128,8 @@ const ImageUploadForm = () => {
 						className="file-field"
 					/>
 					{image ? (
+						// Once image is selected, the tags will appear
+
 						<fieldset className="tags-fieldset">
 							<legend className="legend-text">
 								Help others find your image! Select a tag (or more):

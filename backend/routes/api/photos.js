@@ -90,11 +90,20 @@ router.get(
 	})
 );
 
+router.post("/create_tags", asyncHandler(async (req, res) => {
+	// console.log("SERVER TAGS" ,req.body.tags)
+	const tags = req.body.tags;
+	const userId = req.body.photoId;
+	console.log( "TAGS" ,tags)
+	console.log("USERID", userId)
+	res.end()
+}))
+
 router.post("/create", asyncHandler( async(req, res) => {
-	// console.log(res.body)
 	const photo = await Photo.create(req.body);
 	res.json(photo)
-}))
+}));
+
 
 const getCommentData = (comments) => {
 	let data = [];
@@ -103,7 +112,7 @@ const getCommentData = (comments) => {
 		comment: comment.comment,
 		createdAt: comment.createdAt
 	}))
-	// console.log(data)
+
 	return data;
 }
 
@@ -172,7 +181,7 @@ const getPhotoData = (photos) => {
 			userId: photo.dataValues.userId,
 		})
 	);
-	// console.log(fileData);
+
 	return fileData;
 };
 
