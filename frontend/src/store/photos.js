@@ -20,6 +20,11 @@ const userPhotos = (photos) => {
   }
 }
 
+// submits the photo to Amazon S3
+export const submitS3 = (data) => async (dispatch) => {
+  
+}
+
 // does fetch call and invokes action creator above with payload
 export const getAllPhotos = () => async (dispatch) => {
 	const response = await fetch("/api/photos");
