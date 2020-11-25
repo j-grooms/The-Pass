@@ -5,7 +5,7 @@ import * as submitActions from "../../store/submission"
 import "./imageUploadForm.css";
 import { Redirect } from "react-router-dom";
 
-const ImageUploadForm = () => {
+const ImageUploadForm = (props) => {
 	const [image, setImage] = useState("");
 	const [imageurl, setImageurl] = useState("");
 
@@ -60,7 +60,7 @@ const ImageUploadForm = () => {
 
 			createPhoto(dbData);
 		});
-
+		props.history.push("/feed")
 	};
 
 	const createPhoto = async (data) => {
