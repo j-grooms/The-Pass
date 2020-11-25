@@ -8,7 +8,7 @@ const router = express.Router();
 router.get(
 	"",
 	asyncHandler(async (req, res) => {
-		const feedPhotos = await Photo.findAll({});
+		const feedPhotos = await Photo.findAll({include: [{model:User}]});
 		const fileData = getPhotoData(feedPhotos);
 		res.send(fileData);
 	})
@@ -18,7 +18,10 @@ router.get(
 router.get(
 	"/:id(\\d+)/",
 	asyncHandler(async (req, res) => {
-		const photos = await Photo.findAll({ where: { userId: req.params.id } });
+		const photos = await Photo.findAll({
+			where: { userId: req.params.id },
+			include: [{ model: User }],
+		});
 		const data = getPhotoData(photos);
 		res.send(data);
 	})
@@ -85,7 +88,7 @@ router.get(
 			where: { photoId: photo.id },
 			include: [{ model: User }],
 		});
-		const data = getCommentData(comments);
+		const data = getCommentData(comments, photo.id);
 		res.send(data);
 	})
 );
@@ -94,8 +97,8 @@ router.post("/tags", asyncHandler(async (req, res) => {
 	// console.log("SERVER TAGS" ,req.body.tags)
 	const tags = req.body.tags;
 	const photoId = req.body.photoId;
-	console.log( "TAGS" ,tags)
-	console.log("USERID", photoId)
+	// console.log( "TAGS" ,tags)
+	// console.log("USERID", photoId)
 	if (photoId) {
 		const createdTags = await tags.forEach(async (tagName) => {
 			await Tag.create({
@@ -113,13 +116,20 @@ router.post("/create", asyncHandler( async(req, res) => {
 	res.json(photo)
 }));
 
+router.post("/comment", asyncHandler(async (req, res) => {
+	const data = req.body
+	// console.log(data)
+	const comment = await Comment.create(data);
+	res.send(comment)
+}))
 
-const getCommentData = (comments) => {
+const getCommentData = (comments, photoId) => {
 	let data = [];
 	comments.map(comment => data.push({
 		username: comment.User.username,
 		comment: comment.comment,
-		createdAt: comment.createdAt
+		createdAt: comment.createdAt,
+		photoId
 	}))
 
 	return data;
@@ -176,7 +186,7 @@ const getAlbumData = (albums, userId) => {
 		})
 	);
 
-	console.log("list", albumData);
+	// console.log("list", albumData);
 	return albumData;
 };
 
@@ -188,6 +198,7 @@ const getPhotoData = (photos) => {
 			photoId: photo.dataValues.id,
 			filename: photo.dataValues.fileName,
 			userId: photo.dataValues.userId,
+			username: photo.dataValues.User.username,
 		})
 	);
 

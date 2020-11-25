@@ -16,7 +16,7 @@ const FeedContainer = () => {
 		// console.log("dispatch")
 
     // dispatches custom action
-    return dispatch(photoActions.getAllPhotos()).catch((res) => console.log("ERROR"));
+    return dispatch(photoActions.getAllPhotos());
 
   }, [dispatch])
 
@@ -25,7 +25,6 @@ const FeedContainer = () => {
   return (
 		statePhotos.photos && (
 			<div className="feed-container">
-				{console.log(statePhotos.photos)}
 				{statePhotos.photos.map((photo) => (
 					<div className="feed-item">
 						<Link to={`/${photo.userId}/${photo.filename}`}>

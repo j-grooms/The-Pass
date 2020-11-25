@@ -10,7 +10,7 @@ const UserFeed = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		return dispatch(photoActions.getPhotosByUser(id)).catch((res) => console.log("Error"));
+		return dispatch(photoActions.getPhotosByUser(id));
 	}, [dispatch]);
 
 	return (

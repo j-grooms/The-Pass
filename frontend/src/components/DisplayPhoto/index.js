@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, Redirect } from "react-router-dom";
 import { fetch } from "../../store/csrf";
 import * as photoActions from "../../store/photos";
+import * as commentActions from "../../store/comments";
 import Photo from "../Photo";
 import "./displayPhoto.css";
 
@@ -12,6 +13,7 @@ const DisplayPhoto = () => {
 	const [comments, setComments] = useState("");
 	const [comment, setComment] = useState("");
 	const [userId, setUserId] = useState("");
+	const [username, setUsername] = useState("");
 	const { id, name } = useParams();
 	const dispatch = useDispatch();
 	const currentUser = useSelector((state) => state.session.user);
@@ -23,22 +25,32 @@ const DisplayPhoto = () => {
 		})();
 
 		setUserId(currentUser.id);
-		console.log("USER ID", userId);
+		// console.log("USER ID", userId);
 
-		return dispatch(photoActions.getPhotosByUser(id)).catch((res) =>
-			console.log("Error")
-		);
-	}, [dispatch, id, name, userId]);
+		return dispatch(photoActions.getPhotosByUser(id));
+	}, [dispatch, id, name, userId, username, comment]);
 
 	if (!currentUser) return <Redirect to="/" />;
 
-	const handleCommentSubmission = () => {};
+	const handleCommentSubmission = (e) => {
+		e.preventDefault();
+		let currentPhotoId;
+		statePhotos.photos.map((photo) => {
+			if (photo.filename === name) currentPhotoId = photo.photoId;
+		});
+		// console.log(currentPhoto);
+		dispatch(commentActions.postComment({photoId: currentPhotoId, comment, userId}))
+		setComment("")
+	};
 
 	return (
 		statePhotos &&
 		comments && (
 			<div className="grid-div">
 				<div className="grid-display">
+					<p className="display-username">
+						Uploaded by: {statePhotos.photos[0].username}
+					</p>
 					<div className="display-container">
 						<img
 							className="display-photo"
@@ -50,7 +62,6 @@ const DisplayPhoto = () => {
 				<div className="grid-comments">
 					<p className="comments-header">Comments</p>
 					<div className="comments-container">
-						{/* {console.log("COMMENTS", comments)} */}
 						{comments.data.map((comment) => (
 							<div className="comment">
 								<p className="comment-user">{comment.username}</p>
@@ -63,10 +74,16 @@ const DisplayPhoto = () => {
 							<input
 								type="text"
 								className="comment-field"
+								value={comment}
 								placeholder="Comment on this photo..."
 								onChange={(e) => setComment(e.target.value)}
 							/>
-							<button className="comment-submit" onClick={handleCommentSubmission}>Post</button>
+							<button
+								className="comment-submit"
+								onClick={handleCommentSubmission}
+							>
+								Post
+							</button>
 						</form>
 					</div>
 				</div>

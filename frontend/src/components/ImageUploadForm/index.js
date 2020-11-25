@@ -34,7 +34,7 @@ const ImageUploadForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(tags);
+		// console.log(tags);
 
 		// attach this to the body, no need to stringify
 		const data = new FormData();
@@ -44,7 +44,7 @@ const ImageUploadForm = () => {
 			submitS3(data);
 		}
 		createTags(tags);
-		return history.push("/feed");
+		// return history.push("/feed");
 	};
 
 	const submitS3 = async (data) => {
@@ -68,7 +68,7 @@ const ImageUploadForm = () => {
 			body: JSON.stringify(data),
 		}).then((res) => {
 			setFetched(true);
-			console.log("FETCHED", fetched)
+			// console.log("FETCHED", fetched)
 			return res;
 		});
 
