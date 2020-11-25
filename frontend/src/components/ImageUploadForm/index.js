@@ -16,12 +16,21 @@ const ImageUploadForm = () => {
 	const [salad, setSalad] = useState(false);
 	const [lamb, setLamb] = useState(false);
 	const currentUser = useSelector((state) => state.session.user);
-
+	const tags = {
+		breakfast,
+		dessert,
+		beef,
+		entree,
+		chicken,
+		seafood,
+		salad,
+		lamb,
+	};
 	if (!currentUser) return <Redirect to="/" />;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
+		console.log(tags);
 		// attach this to the body, no need to stringify
 		// Content-Type: <for images>
 		const data = new FormData();
@@ -29,7 +38,8 @@ const ImageUploadForm = () => {
 			data.append("img", image);
 			submitS3(data);
 		}
-		return <Redirect to="/" />;
+		createTags(tags);
+		// return <Redirect to="/" />;
 	};
 
 	const submitS3 = async (data) => {
@@ -39,12 +49,12 @@ const ImageUploadForm = () => {
 			// headers: { "Content-Type": "image/jpg" },
 			body: data,
 		});
-		console.log(currentUser.id);
-		console.log(res.data);
+
 		const dbData = {
 			fileName: res.data,
 			userId: currentUser.id,
 		};
+
 		createPhoto(dbData);
 	};
 
@@ -54,7 +64,16 @@ const ImageUploadForm = () => {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(data),
 		});
-		console.log(res);
+		// const jsonRes = await res.json()
+		console.log(res.data);
+	};
+
+	const createTags = (tags, photoRes) => {
+		let selectedTags = [];
+		for (let tag in tags) {
+			if (tags[tag]=== true) selectedTags.push(tag);
+		}
+		console.log(selectedTags);
 	};
 
 	const handleChange = (e) => {

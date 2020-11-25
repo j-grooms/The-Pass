@@ -93,7 +93,7 @@ router.get(
 router.post("/create", asyncHandler( async(req, res) => {
 	// console.log(res.body)
 	const photo = await Photo.create(req.body);
-	res.send('success')
+	res.json(photo)
 }))
 
 const getCommentData = (comments) => {
