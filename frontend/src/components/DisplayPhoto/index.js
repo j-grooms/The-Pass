@@ -8,30 +8,31 @@ import "./displayPhoto.css";
 
 const DisplayPhoto = () => {
 	const statePhotos = useSelector((state) => state.photo);
-	// const stateComments = useSelector((state) => state.comment);
+
 	const [comments, setComments] = useState("");
+	const [comment, setComment] = useState("");
+	const [userId, setUserId] = useState("");
 	const { id, name } = useParams();
 	const dispatch = useDispatch();
 	const currentUser = useSelector((state) => state.session.user);
 
-
 	useEffect(() => {
-		// dispatch(commentActions.getPhotoComments(id)).catch((res) =>
-		// 	console.log("COMMENT ERROR")
-		// );
 		(async () => {
 			const commentData = await fetch(`/api/photos/comments/${name}`);
 			setComments(commentData);
 		})();
 
+		setUserId(currentUser.id);
+		console.log("USER ID", userId);
+
 		return dispatch(photoActions.getPhotosByUser(id)).catch((res) =>
 			console.log("Error")
 		);
-	}, [dispatch, id, name]);
+	}, [dispatch, id, name, userId]);
 
 	if (!currentUser) return <Redirect to="/" />;
 
-	// useEffect(() => {}, [name]);
+	const handleCommentSubmission = () => {};
 
 	return (
 		statePhotos &&
@@ -49,13 +50,24 @@ const DisplayPhoto = () => {
 				<div className="grid-comments">
 					<p className="comments-header">Comments</p>
 					<div className="comments-container">
-						{console.log("COMMENTS", comments)}
+						{/* {console.log("COMMENTS", comments)} */}
 						{comments.data.map((comment) => (
 							<div className="comment">
 								<p className="comment-user">{comment.username}</p>
 								<p className="comment-content">{comment.comment}</p>
 							</div>
 						))}
+					</div>
+					<div className="comment-form-container">
+						<form className="comment-form">
+							<input
+								type="text"
+								className="comment-field"
+								placeholder="Comment on this photo..."
+								onChange={(e) => setComment(e.target.value)}
+							/>
+							<button className="comment-submit" onClick={handleCommentSubmission}>Post</button>
+						</form>
 					</div>
 				</div>
 				<div className="grid-other">

@@ -44,7 +44,7 @@ const ImageUploadForm = () => {
 			submitS3(data);
 		}
 		createTags(tags);
-		// return <Redirect to="/" />;
+		return history.push("/feed");
 	};
 
 	const submitS3 = async (data) => {
