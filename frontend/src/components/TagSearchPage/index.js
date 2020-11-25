@@ -1,33 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import Photo from "../Photo";
 import "./tagSearchPage.css";
+import * as photoActions from "../../store/photos";
 
 const TagSearchPage = () => {
-  const statePhotos = useSelector(state => state.photo);
-  const currentUser = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
+	const statePhotos = useSelector((state) => state.photo);
+	const currentUser = useSelector((state) => state.session.user);
+	const dispatch = useDispatch();
 
-  const [searchValue, setSearchValue] = useState('')
+	const [searchValue, setSearchValue] = useState("");
 
-  useEffect(() => {}, [])
+	useEffect(() => {}, [statePhotos]);
 
+	if (!currentUser) return <Redirect to="/" />;
 
-  if (!currentUser) return <Redirect to="/" />
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(searchValue)
-  }
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(searchValue);
+		dispatch(photoActions.getPhotosByTag(searchValue));
+	};
 
 	return (
 		<>
 			<div className="tag-search-container">
-				<p className="tag-form-header">
-					Select a Tag and hit Search!
-				</p>
+				<p className="tag-form-header">Select a Tag and hit Search!</p>
 				<form className="tag-form" onSubmit={handleSubmit}>
-					<select className="tag-select" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}>
+					<select
+						className="tag-select"
+						value={searchValue}
+						onChange={(e) => setSearchValue(e.target.value)}
+					>
 						<option value="">Select a Tag...</option>
 						<option value="breakfast">Breakfast</option>
 						<option value="entree">Entree</option>
@@ -41,11 +45,19 @@ const TagSearchPage = () => {
 					<button className="tag-button">Search</button>
 				</form>
 			</div>
-      <div className="search-results-container">
-        <div className="search-results">
-
-        </div>
-      </div>
+			{statePhotos.photos ? (
+				<div className="tag-feed-container">
+					{statePhotos.photos.map((photo) => (
+						<div className="feed-item">
+							<Link to={`/${photo.userId}/${photo.filename}`}>
+								<Photo photo={photo.filename} />
+							</Link>
+						</div>
+					))}
+				</div>
+			) : (
+				<> </>
+			)}
 		</>
 	);
 };

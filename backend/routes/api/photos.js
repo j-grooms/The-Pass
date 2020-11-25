@@ -144,7 +144,7 @@ const getTagData = (tags) => {
 		data.push({
 			tagName: tag.tagName,
 			photoId: tag.photoId,
-			fileName: tag.Photo.fileName,
+			filename: tag.Photo.fileName,
 			userId: tag.Photo.userId,
 		});
 	});
@@ -161,7 +161,7 @@ const getAllAlbumPhotos = (albums) => {
 			userId: album.userId,
 			albumName: album.albumName,
 			photoId: album.photoId,
-			fileName: album.Photo.fileName,
+			filename: album.Photo.fileName,
 			username: album.User.username,
 		});
 	});
