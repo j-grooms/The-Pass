@@ -112,6 +112,7 @@ router.post("/tags", asyncHandler(async (req, res) => {
 }))
 
 router.post("/create", asyncHandler( async(req, res) => {
+	console.log(req.body)
 	const photo = await Photo.create(req.body);
 	res.json(photo)
 }));
