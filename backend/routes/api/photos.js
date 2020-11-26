@@ -8,7 +8,7 @@ const router = express.Router();
 router.get(
 	"",
 	asyncHandler(async (req, res) => {
-		const feedPhotos = await Photo.findAll({include: [{model:User}]});
+		const feedPhotos = await Photo.findAll({include: [{model:User}], order: [["id", "DESC"]]});
 		const fileData = getPhotoData(feedPhotos);
 		res.send(fileData);
 	})
