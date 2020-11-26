@@ -63,9 +63,9 @@ const DisplayPhoto = () => {
 					<p className="comments-header">Comments</p>
 					<div className="comments-container">
 						{comments.data.map((comment) => (
-							<div className="comment">
-								<p className="comment-user">{comment.username}</p>
-								<p className="comment-content">{comment.comment}</p>
+							<div className="comment" key={comment.username}>
+								<p className="comment-user" key={comment.username}>{comment.username}</p>
+								<p className="comment-content" key={comment.username}>{comment.comment}</p>
 							</div>
 						))}
 					</div>
@@ -91,9 +91,9 @@ const DisplayPhoto = () => {
 					<p className="other-photos-header">All photos by this user:</p>
 					<div className="preview-container">
 						{statePhotos.photos.map((photo) => (
-							<div className="preview-photo">
-								<Link to={`/${photo.userId}/${photo.filename}`}>
-									<Photo photo={photo.filename} />
+							<div className="preview-photo" key ={photo.filename}>
+								<Link to={`/${photo.userId}/${photo.filename}`} key ={photo.filename}>
+									<Photo photo={photo.filename} key ={photo.filename} />
 								</Link>
 							</div>
 						))}

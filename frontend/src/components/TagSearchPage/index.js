@@ -48,9 +48,9 @@ const TagSearchPage = () => {
 			{statePhotos.photos ? (
 				<div className="tag-feed-container">
 					{statePhotos.photos.map((photo) => (
-						<div className="feed-item">
-							<Link to={`/${photo.userId}/${photo.filename}`}>
-								<Photo photo={photo.filename} />
+						<div className="feed-item" key={photo.filename} >
+							<Link to={`/${photo.userId}/${photo.filename}`} key={photo.filename} >
+								<Photo photo={photo.filename} key={photo.filename}  />
 							</Link>
 						</div>
 					))}

@@ -11,14 +11,14 @@ const UserFeed = () => {
 
 	useEffect(() => {
 		return dispatch(photoActions.getPhotosByUser(id));
-	}, [dispatch]);
+	}, [dispatch, id]);
 
 	return (
 		 (
 			<div>
 				{/* {console.log("STATE", statePhotos)} */}
 				<p>{id}</p>
-				{statePhotos.photos.map(photo => <Photo photo={photo.filename}/>)}
+				{statePhotos.photos.map(photo => <Photo photo={photo.filename} key={photo.filename} />)}
 			</div>
 		)
 	);
