@@ -10,6 +10,7 @@ import SignUpFormPage from "./components/SignUpFormPage";
 import SplashPage from "./components/SplashPage";
 import DisplayPhoto from "./components/DisplayPhoto";
 import TagSearchPage from "./components/TagSearchPage";
+import AboutPage from "./components/AboutPage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
 				{/* <ImageUploadForm /> */}
 				<Switch>
 					<Route exact path="/" component={SplashPage} />
+					<Route path="/about" component={AboutPage} />
 					<Route path="/login" component={LoginFormPage} />
 					<Route path="/signup" component={SignUpFormPage} />
 					<Route path="/upload" component={ImageUploadForm} />

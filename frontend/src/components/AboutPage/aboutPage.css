@@ -1,0 +1,41 @@
+.about-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	max-width: 750px;
+	margin: 0px auto;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+.about-header {
+	text-align: center;
+	padding: 5px;
+	color: white;
+	margin: 150px auto 0px auto;
+	max-width: 200px;
+	font-size: 16pt;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 10px 10px 0px 0px;
+}
+
+.about-info {
+	padding: 10px;
+	font-size: 14pt;
+}
+
+.tab {
+	margin-left: 20px;
+}
+
+
+.about-links {
+  font-size: 11pt;
+  padding: 10px;
+}
+
+.github-link {
+	color: #e91c68;
+}

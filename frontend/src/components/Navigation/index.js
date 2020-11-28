@@ -14,7 +14,14 @@ const Navigation = () => {
 					</NavLink>
 				</li>
 				{!currentUser ? (
-					<></>
+					<>
+						{" "}
+						<li className="nav-list-item">
+							<NavLink exact to="/about" className="nav-link">
+								About
+							</NavLink>
+						</li>
+					</>
 				) : (
 					<>
 						<li className="nav-list-item">
