@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import SplashPage from "../SplashPage";
 
 const LoginFormPage = () => {
@@ -25,7 +25,7 @@ const LoginFormPage = () => {
 
 	return (
 		<>
-		<SplashPage />
+			<SplashPage />
 			<div className="login-form-container">
 				<form onSubmit={handleSubmission}>
 					<p className="form-header">Welcome Back.</p>

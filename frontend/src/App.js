@@ -7,7 +7,6 @@ import ImageUploadForm from './components/ImageUploadForm'
 import * as sessionActions from "./store/session";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpFormPage from "./components/SignUpFormPage";
-import UserFeed from "./components/UserFeed";
 import SplashPage from "./components/SplashPage";
 import DisplayPhoto from "./components/DisplayPhoto";
 import TagSearchPage from "./components/TagSearchPage";
@@ -31,7 +30,8 @@ function App() {
 					<Route path="/feed" component={FeedContainer} />
 					<Route path="/tags" component={TagSearchPage} />
 					<Route path="/:id/:name" component={DisplayPhoto} />
-					<Route path="/:id(\d+)" component={UserFeed} />
+					{/* TODO: implement profile pages */}
+					{/* <Route path="/:id(\d+)" component={UserFeed} /> */}
 				</Switch>
 			</React.Fragment>
 		)

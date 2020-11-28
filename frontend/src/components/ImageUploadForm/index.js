@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { fetch } from "../../store/csrf";
 import { useSelector } from "react-redux";
-import * as submitActions from "../../store/submission"
 import "./imageUploadForm.css";
 import { Redirect } from "react-router-dom";
 
@@ -29,30 +28,26 @@ const ImageUploadForm = (props) => {
 		salad,
 	};
 
-	const [fetched, setFetched] = useState(false)
 	const currentUser = useSelector((state) => state.session.user);
 	if (!currentUser) return <Redirect to="/" />;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// console.log(tags);
 
-		// attach this to the body, no need to stringify
+		// attach this to the body
 		const data = new FormData();
 
 		if (image) {
 			data.append("img", image);
 			submitS3(data);
 		}
-		// createTags(tags);
-		// return history.push("/feed");
 	};
 
 	const submitS3 = async (data) => {
-		const res = await fetch("/api/s3/post_file", {
+		await fetch("/api/s3/post_file", {
 			method: "POST",
 			body: data,
-		}).then(res => {
+		}).then((res) => {
 			const dbData = {
 				fileName: res.data,
 				userId: currentUser.id,
@@ -60,24 +55,17 @@ const ImageUploadForm = (props) => {
 
 			createPhoto(dbData);
 		});
-		props.history.push("/feed")
+		props.history.push("/feed");
 	};
 
 	const createPhoto = async (data) => {
-		const res = await fetch("/api/photos/create", {
+		await fetch("/api/photos/create", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(data),
 		}).then((res) => {
-			setFetched(true);
-			// console.log("FETCHED", fetched)
-			return res;
-		}).then(res => {
 			createTags(tags, res.data.id);
 		});
-
-		// res.data.id is the photoId of newly created photo
-		// if (fetched) createTags(tags, res.data.id);
 	};
 
 	const createTags = async (tags, photoId) => {
@@ -93,7 +81,7 @@ const ImageUploadForm = (props) => {
 			tags: selectedTags,
 		};
 
-		const res = await fetch("/api/photos/tags", {
+		await fetch("/api/photos/tags", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(dbData),

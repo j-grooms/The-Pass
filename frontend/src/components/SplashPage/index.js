@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux'
-import { Redirect, Switch, Route, Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import "./splashPage.css"
 

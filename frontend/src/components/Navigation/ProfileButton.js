@@ -29,7 +29,7 @@ const ProfileButton = ({ user }) => {
 	};
 
 	return (
-		<div className='nav-holder'>
+		<div className="nav-holder">
 			<button
 				className="nav-user-icon"
 				style={{ fontSize: "30px" }}
@@ -42,8 +42,9 @@ const ProfileButton = ({ user }) => {
 					<li>{user.username}</li>
 					<li>{user.email}</li>
 
-						<button onClick={logout} className="nav-submit">Log Out</button>
-
+					<button onClick={logout} className="nav-submit">
+						Log Out
+					</button>
 				</ul>
 			)}
 		</div>

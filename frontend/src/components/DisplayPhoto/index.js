@@ -13,7 +13,7 @@ const DisplayPhoto = () => {
 	const [comments, setComments] = useState("");
 	const [comment, setComment] = useState("");
 	const [userId, setUserId] = useState("");
-	const [username, setUsername] = useState("");
+	// const [username, setUsername] = useState("");
 	const { id, name } = useParams();
 	const dispatch = useDispatch();
 	const currentUser = useSelector((state) => state.session.user);
@@ -25,10 +25,9 @@ const DisplayPhoto = () => {
 		})();
 
 		setUserId(currentUser.id);
-		// console.log("USER ID", userId);
 
 		return dispatch(photoActions.getPhotosByUser(id));
-	}, [dispatch, id, name, userId, username, comment]);
+	}, [dispatch, id, name, userId, comment, currentUser.id]);
 
 	if (!currentUser) return <Redirect to="/" />;
 
@@ -37,12 +36,15 @@ const DisplayPhoto = () => {
 		let currentPhotoId;
 		statePhotos.photos.map((photo) => {
 			if (photo.filename === name) currentPhotoId = photo.photoId;
+			return currentPhotoId;
 		});
-		// console.log(currentPhoto);
-		dispatch(commentActions.postComment({photoId: currentPhotoId, comment, userId}))
-		setComment("")
-	};
 
+		dispatch(
+			commentActions.postComment({ photoId: currentPhotoId, comment, userId })
+		);
+		setComment("");
+	};
+	//
 	return (
 		statePhotos &&
 		comments && (
@@ -64,8 +66,12 @@ const DisplayPhoto = () => {
 					<div className="comments-container">
 						{comments.data.map((comment) => (
 							<div className="comment" key={comment.username}>
-								<p className="comment-user" key={comment.username}>{comment.username}</p>
-								<p className="comment-content" key={comment.username}>{comment.comment}</p>
+								<p className="comment-user" key={comment.username}>
+									{comment.username}
+								</p>
+								<p className="comment-content" key={comment.username}>
+									{comment.comment}
+								</p>
 							</div>
 						))}
 					</div>
@@ -91,9 +97,12 @@ const DisplayPhoto = () => {
 					<p className="other-photos-header">All photos by this user:</p>
 					<div className="preview-container">
 						{statePhotos.photos.map((photo) => (
-							<div className="preview-photo" key ={photo.filename}>
-								<Link to={`/${photo.userId}/${photo.filename}`} key ={photo.filename}>
-									<Photo photo={photo.filename} key ={photo.filename} />
+							<div className="preview-photo" key={photo.filename}>
+								<Link
+									to={`/${photo.userId}/${photo.filename}`}
+									key={photo.filename}
+								>
+									<Photo photo={photo.filename} key={photo.filename} />
 								</Link>
 							</div>
 						))}
