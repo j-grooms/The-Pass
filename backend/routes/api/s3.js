@@ -3,9 +3,11 @@ const router = express.Router();
 const multer = require('multer')
 const AWS = require('aws-sdk');
 const fs = require('fs');
-const keys = require('../../keys')
+const AWSkeys = require('../../keys')
 const path = require('path')
 
+// Tell multer where to store the file temporarily,
+// as well as change the filename to a unique name with a date
 const storage = multer.diskStorage({
 	destination: "./uploads",
 	filename: function (req, file, cb) {
@@ -15,9 +17,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Tells aws-sdk what credentials to use
 AWS.config.update({
-  accessKeyId: keys.iam_access_id,
-  secretAccessKey: keys.iam_secret,
+  accessKeyId: AWSkeys.iam_access_id,
+  secretAccessKey: AWSkeys.iam_secret,
   region: 'us-east-2'
 });
 
@@ -26,21 +29,17 @@ const s3 = new AWS.S3();
 //POST method route for uploading file
 router.post('/post_file', upload.single("img"), function (req, res) {
 
-  // Multer middleware adds file to request object.
+  // Multer grabs the photo and adds it to the request
+  // Local copy is stored in ./uploads until upload is successful
   uploadFile(req.file.path, req.file.filename ,res);
 
 })
 
 
-router.get('/', (req, res) => {
-  res.json('connected')
-});
 
-
-
-//The uploadFile function
+// Where the upload happens
 function uploadFile(source,targetName,res){
-    console.log('preparing to upload...');
+
     fs.readFile(source, function (err, filedata) {
       if (!err) {
         const putParams = {
@@ -50,19 +49,19 @@ function uploadFile(source,targetName,res){
         };
         s3.putObject(putParams, function(err, data){
           if (err) {
-            console.log('Could not upload the file. Error :',err);
+            console.log('File not uploaded. Error :',err);
             return res.send({success:false});
           }
           else{
+            // deleted file from uploads folder
             fs.unlinkSync(source);
-            // Deleting the file from uploads folder(Optional).Do Whatever you prefer.
-            console.log('Successfully uploaded the file');
+            // Return new filename for further processing
             return res.json(targetName);
           }
         });
       }
       else{
-        console.log({'err':err});
+        console.log({'Error': err});
       }
     });
   }
