@@ -1,7 +1,7 @@
 ## The Pass
 
-[Link to live site](https://the-pass.herokuapp.com/)
-[Link to my github page](https://github.com/j-grooms)
+- [Link to live site](https://the-pass.herokuapp.com/)
+- [Link to my github page](https://github.com/j-grooms)
 ### What We Are
 
 The Pass is an app designed for chefs and cooking enthusiasts to share their work in one of the most important areas of cooking: the plating. They say people eat with their eyes first, and I have always found this to be true.
@@ -74,4 +74,4 @@ The Pass may have been built in just a week, but by no means does it stop there.
 - Comment deletion and editing
 - Custom Tags and Tag Editing
 
-Feel free to contact me on github with any and all questions! 
+Feel free to contact me on github with any and all questions!

@@ -23,6 +23,15 @@ const LoginFormPage = () => {
 		});
 	};
 
+	const demoLogin = (e) => {
+		e.preventDefault();
+		return dispatch(
+			sessionActions.login({ credential: "Demo User", password: "password" })
+		).catch((res) => {
+			if (res.data && res.data.errors) setErrors(res.data.errors);
+		});
+	};
+
 	return (
 		<>
 			<SplashPage />
@@ -58,13 +67,13 @@ const LoginFormPage = () => {
 						<button type="submit" className="login-submit">
 							Log In
 						</button>
+						<button onClick={demoLogin} className="demouser">
+							Demo User
+						</button>
+					</div>
+					<div className="login-button-holder">
 					</div>
 				</form>
-			</div>
-			<div className="form-links">
-				{/* <Link to="/signup" className="login-footer-link">
-					Don't Have an Account?
-				</Link> */}
 			</div>
 		</>
 	);
