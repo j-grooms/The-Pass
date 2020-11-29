@@ -22,7 +22,6 @@ function App() {
 		isLoaded && (
 			<React.Fragment>
 				<Navigation />
-				{/* <ImageUploadForm /> */}
 				<Switch>
 					<Route exact path="/" component={SplashPage} />
 					<Route path="/about" component={AboutPage} />

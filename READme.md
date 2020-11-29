@@ -34,5 +34,7 @@ export const getAllPhotos = () => async (dispatch) => {
 };
 
 // these photos are persisted to the state,
-// allowing me to use them in several places with only one database call
+// allowing app-wide access
 ```
+
+

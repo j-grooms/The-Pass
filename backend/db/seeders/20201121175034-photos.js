@@ -125,7 +125,7 @@ module.exports = {
 			},
 			{
 				userId: 6,
-				fileName: "tacos.jpeg",
+				fileName: "sushi.jpg",
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},

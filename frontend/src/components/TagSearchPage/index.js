@@ -18,7 +18,6 @@ const TagSearchPage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(searchValue);
 		dispatch(photoActions.getPhotosByTag(searchValue));
 	};
 

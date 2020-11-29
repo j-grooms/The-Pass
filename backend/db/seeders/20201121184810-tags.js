@@ -8,7 +8,7 @@ module.exports = {
       {tagName: "dessert", photoId: 8, createdAt: new Date(), updatedAt: new Date()},
       {tagName: "beef", photoId: 3, createdAt: new Date(), updatedAt: new Date()},
       {tagName: "beef", photoId: 18, createdAt: new Date(), updatedAt: new Date()},
-      {tagName: "beef", photoId: 21, createdAt: new Date(), updatedAt: new Date()},
+      {tagName: "seafood", photoId: 21, createdAt: new Date(), updatedAt: new Date()},
       {tagName: "breakfast", photoId: 16, createdAt: new Date(), updatedAt: new Date()},
       {tagName: "seafood", photoId: 2, createdAt: new Date(), updatedAt: new Date()},
       {tagName: "seafood", photoId: 5, createdAt: new Date(), updatedAt: new Date()},

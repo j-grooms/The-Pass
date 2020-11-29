@@ -5,7 +5,6 @@ const csurf = require("csurf");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const { ValidationError } = require("sequelize");
-const bodyParser = require('body-parser')
 
 const routes = require("./routes");
 const { environment } = require("./config");
@@ -16,7 +15,6 @@ const app = express();
 app.use(morgan("dev"));
 
 app.use(cookieParser());
-// app.use(bodyParser({limit: "10MB"}))
 app.use(express.json({limit: "10MB"}));
 
 // Security Middleware
@@ -24,7 +22,7 @@ if (!isProduction) {
   // enable cors only in development
   app.use(cors());
 }
-// helmet helps set a variety of headers to better secure your app
+// helmet helps set a variety of headers to better secure app
 app.use(helmet({
   contentSecurityPolicy: false
 }));

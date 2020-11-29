@@ -34,7 +34,7 @@ module.exports = {
 			{
 				userId: 2,
 				photoId: 20,
-				comment: "Beautiful picture. This belongs on a menu!",
+				comment: "Lovely picture. This belongs on a menu!",
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
