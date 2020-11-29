@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux'
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
 import "./splashPage.css"
 
@@ -13,8 +13,8 @@ const SplashPage = () => {
         <p className="splash-subtitle">To get started, select an option below.</p>
       </div>
       <div className="splash-links">
-        <Link className="splash-link" to="/login">Log In</Link>
-        <Link className="splash-link" to="/signup">Sign me up!</Link>
+        <NavLink activeClassName="active-link" className="splash-link" to="/login">Log In</NavLink>
+        <NavLink activeClassName="active-link" className="splash-link" to="/signup">Sign me up!</NavLink>
       </div>
 		</>
 	);

@@ -17,7 +17,7 @@
 	margin: 150px auto 0px auto;
 	max-width: 200px;
 	font-size: 16pt;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
 	border-radius: 10px 10px 0px 0px;
 }
 
@@ -30,10 +30,9 @@
 	margin-left: 20px;
 }
 
-
 .about-links {
-  font-size: 11pt;
-  padding: 10px;
+	font-size: 11pt;
+	padding: 10px;
 }
 
 .github-link {

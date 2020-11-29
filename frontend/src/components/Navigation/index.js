@@ -8,14 +8,13 @@ const Navigation = () => {
 	return (
 		<div className="nav-container">
 			<ul className="nav-links">
-				<li className="nav-list-item">
-					<NavLink exact to="/" className="nav-link">
-						Home
-					</NavLink>
-				</li>
 				{!currentUser ? (
 					<>
-						{" "}
+						<li className="nav-list-item">
+							<NavLink exact to="/" className="nav-link">
+								Home
+							</NavLink>
+						</li>
 						<li className="nav-list-item">
 							<NavLink exact to="/about" className="nav-link">
 								About
@@ -24,6 +23,11 @@ const Navigation = () => {
 					</>
 				) : (
 					<>
+						<li className="nav-list-item">
+							<NavLink exact to="/feed" className="nav-link">
+								Home
+							</NavLink>
+						</li>
 						<li className="nav-list-item">
 							<NavLink to="/upload" className="nav-link">
 								Upload an Image

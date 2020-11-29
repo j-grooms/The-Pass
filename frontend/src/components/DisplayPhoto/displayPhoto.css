@@ -23,7 +23,7 @@
 	text-align: center;
 	max-width: 300px;
 	margin: 0px auto;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
 	padding: 10px;
 	border-radius: 10px 10px 0px 0px;
 }
@@ -65,7 +65,7 @@
 	text-align: center;
 	max-width: 200px;
 	margin: 0px auto;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
 	padding: 10px;
 	border-radius: 10px 10px 0px 0px;
 }
@@ -119,7 +119,7 @@
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
 	max-width: 400px;
 	margin: 0px auto;
 	height: 50px;

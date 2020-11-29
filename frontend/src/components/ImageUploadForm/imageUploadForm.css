@@ -1,7 +1,7 @@
 .form-div {
 	background-color: rgba(0, 0, 0, 0.8);
-  max-width: 550px;
-  border-radius: 3px;
+	max-width: 550px;
+	border-radius: 3px;
 	margin: 0px auto;
 	padding: 20px;
 }
@@ -12,7 +12,7 @@
 	padding: 15px;
 	max-width: 350px;
 	margin: 50px auto 0px auto;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
 	border-radius: 10px 10px 0px 0px;
 }
 
@@ -71,31 +71,31 @@ input[type="file"] {
 }
 
 .tags-fieldset {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 10px;
-  /* margin-left: 10px; */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-top: 10px;
+	/* margin-left: 10px; */
 }
 
 .check-div {
-  width: 100px;
+	width: 100px;
 }
 
 .tag-checkbox {
-  margin-right: 10px
+	margin-right: 10px;
 }
 
-.tag-label{
-  color: white;
+.tag-label {
+	color: white;
 }
 
 .legend-text {
 	text-align: center;
-  color: white;
-  padding-top: 10px;
+	color: white;
+	padding-top: 10px;
 }
 
 .checkboxes {
-  margin: 0px auto;
+	margin: 0px auto;
 }
