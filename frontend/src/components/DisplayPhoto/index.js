@@ -64,9 +64,9 @@ const DisplayPhoto = () => {
 				<div className="grid-comments">
 					<p className="comments-header">Comments</p>
 					<div className="comments-container">
-						{comments.data.map((comment) => (
-							<div className="comment" key={comment.username}>
-								<p className="comment-user" key={comment.username}>
+						{comments.data.map((comment, id) => (
+							<div className="comment" key={id}>
+								<p className="comment-user" key={id}>
 									{comment.username}
 								</p>
 								<p className="comment-content" key={comment.username}>
