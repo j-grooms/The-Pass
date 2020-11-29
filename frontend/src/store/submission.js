@@ -29,7 +29,7 @@ export const createTags = (tags, photoId) => async(dispatch) => {
 		tags: selectedTags,
 	};
 
-	const res = await fetch("/api/photos/tags", {
+	await fetch("/api/photos/tags", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(dbData),
@@ -37,7 +37,7 @@ export const createTags = (tags, photoId) => async(dispatch) => {
 };
 
 const submissionReducer = (state = { submit: null }, action) => {
-	let newState;
+	// let newState;
 	switch (action.type) {
 		default:
 			return state;

@@ -13,7 +13,7 @@ const photoComments = (comments) => {
 
 //action creator for comment creation
 export const postComment = (data) => async(dispatch) => {
-	const response = await fetch('/api/photos/comment', {
+	await fetch('/api/photos/comment', {
 		method: "POST",
 		headers: {"Content-Type": "application/json"},
 		body: JSON.stringify(data),

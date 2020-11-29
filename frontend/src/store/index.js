@@ -3,13 +3,13 @@ import sessionReducer from './session'
 import photoReducer from './photos'
 import commentReducer from './comments'
 import thunk from "redux-thunk";
-import submissionReducer from "./submission";
+// import submissionReducer from "./submission";
 
 const rootReducer = combineReducers({
 	session: sessionReducer,
 	photo: photoReducer,
 	comment: commentReducer,
-	submit: submissionReducer,
+	// submit: submissionReducer,
 })
 
 let enhancer;
