@@ -19,7 +19,7 @@ The Amazon S3 integration took quite a while to get working fully. It was a bran
 Redux as a whole was a difficult concept to grasp, because of all the moving parts. Once I was able to implement a few things with it, it clicked and became a lot easier to understand. Once the store is in place, with all the reducers hooked up, it was simple to make requests like this in my front-end.
 
 ```js
-// componenets/FeedContainer
+// components/FeedContainer
 useEffect(() => {
 	// dispatches custom action
 	// this handles the API call in the reducer,
