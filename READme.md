@@ -47,7 +47,7 @@ const [dessert, setDessert] = useState(false);
 onChange={() => setDessert(!dessert)}
 ```
 
-In addition, it was very easily to conditionally render groups or individual elements based on current state.
+In addition, it was very easy to conditionally render groups or individual elements based on current state.
 
 ```js
 // components/ImageUploadForm
