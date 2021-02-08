@@ -24,8 +24,8 @@
 }
 
 .feed-item {
-  max-width: 394px;
-  max-height: 194px;
+  width: 394px;
+  height: 194px;
   padding: 5px;
   align-self: center;
   overflow: hidden;
