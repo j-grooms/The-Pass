@@ -20,6 +20,7 @@ const DisplayPhoto = () => {
 
 	useEffect(() => {
 		(async () => {
+			await dispatch(photoActions.getAllPhotos())
 			const commentData = await fetch(`/api/photos/comments/${name}`);
 			setComments(commentData);
 		})();
