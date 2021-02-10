@@ -7,7 +7,6 @@ import ImageUploadForm from './components/ImageUploadForm'
 import * as sessionActions from "./store/session";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpFormPage from "./components/SignUpFormPage";
-import SplashPage from "./components/SplashPage";
 import DisplayPhoto from "./components/DisplayPhoto";
 import TagSearchPage from "./components/TagSearchPage";
 import AboutPage from "./components/AboutPage";
@@ -23,8 +22,7 @@ function App() {
 			<React.Fragment>
 				<Navigation />
 				<Switch>
-					<Route exact path="/" component={SplashPage} />
-					<Route path="/about" component={AboutPage} />
+					<Route exact path="/" component={AboutPage} />
 					<Route path="/login" component={LoginFormPage} />
 					<Route path="/signup" component={SignUpFormPage} />
 					<Route path="/upload" component={ImageUploadForm} />

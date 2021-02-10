@@ -1,8 +1,10 @@
 import "./aboutPage.css";
+import SplashPage from "../SplashPage"
 
 const AboutPage = () => {
 	return (
 		<>
+			<SplashPage />
 			<p className="about-header">About This App</p>
 			<div className="about-container">
 				<p className="about-info">
@@ -13,8 +15,7 @@ const AboutPage = () => {
 				<p className="about-info">
 					<span className="tab">Before</span> starting out as a programmer I
 					worked in kitchens, and really enjoyed the act of plating a dish. I am
-					proud of this project, as I feel that it accomplishes the goal I had
-					for implementing an image upload to the cloud, as well as bringing in
+					proud of this project, as I feel that it showcases what I have learned to date, while bringing in
 					the passion I have for food presentation.
 				</p>
 				<p className="about-links">
@@ -24,7 +25,7 @@ const AboutPage = () => {
 						className="github-link"
 						href="https://github.com/j-grooms/The-Pass"
 					>
-						The Pass on github
+						The Pass on Github.
 					</a>
 				</p>
 				<div className="about-icons">
