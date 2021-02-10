@@ -26,7 +26,7 @@ const DisplayPhoto = () => {
 		})();
 
 		setUserId(currentUser.id);
-
+ 
 		return dispatch(photoActions.getPhotosByUser(id));
 	}, [dispatch, id, name, userId, comment, currentUser]);
 

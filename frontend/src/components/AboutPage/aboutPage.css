@@ -32,9 +32,27 @@
 
 .about-links {
 	font-size: 11pt;
-	padding: 10px;
+	padding-top: 10px;
+	text-align: center;
 }
 
 .github-link {
+	color: #e91c68;
+}
+
+.about-icons {
+	width: 250px;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.about-icons > a {
+	font-size: 28pt;
+}
+
+.about-icons > a:hover {
 	color: #e91c68;
 }
