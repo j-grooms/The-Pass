@@ -20,13 +20,13 @@ const DisplayPhoto = () => {
 
 	useEffect(() => {
 		(async () => {
-			await dispatch(photoActions.getAllPhotos())
+			// await dispatch(photoActions.getAllPhotos())
 			const commentData = await fetch(`/api/photos/comments/${name}`);
 			setComments(commentData);
 		})();
 
 		setUserId(currentUser.id);
- 
+
 		return dispatch(photoActions.getPhotosByUser(id));
 	}, [dispatch, id, name, userId, comment, currentUser]);
 
